@@ -3,43 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catracho Wear HN | Tienda Oficial</title>
+  <title>Catracho Wear HN | Tienda Digital Oficial</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Fuentes e Íconos Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+  <!-- Top Bar Promocional -->
+  <div class="top-bar">
+    <p>🇭🇳 ¡Orgullo Hondureño! Envíos rápidos a todo el país | Atención directa por WhatsApp</p>
+  </div>
+
   <!-- Encabezado / Navegación -->
   <header>
-    <div class="logo">Catracho Wear HN</div>
+    <div class="logo">
+      <i class="fa-solid fa-shirt"></i> Catracho Wear <span>HN</span>
+    </div>
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#catalogo">Catálogo</a>
+      <a href="#beneficios">Beneficios</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <!-- Hero Banner -->
+  <!-- Hero Banner Principal -->
   <section id="inicio" class="hero">
-    <h1>Moda con Identidad Hondureña</h1>
-    <p>Prendas de vestir casuales e institucionales diseñadas en San Pedro Sula.</p>
-    <a href="#catalogo" class="btn">Ver Catálogo</a>
+    <div class="hero-content">
+      <span class="badge-hero">Colección II PAC 2026</span>
+      <h1>Moda con Identidad Catracha</h1>
+      <p>Prendas de vestir casuales, corporativas y deportivas confeccionadas en San Pedro Sula con estándares de alta calidad.</p>
+      <div class="hero-buttons">
+        <a href="#catalogo" class="btn btn-primary"><i class="fa-solid fa-bag-shopping"></i> Ver Catálogo</a>
+        <a href="https://wa.me/50499999999" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Pedido B2B / WhatsApp</a>
+      </div>
+    </div>
   </section>
 
-  <!-- Seccion de Catalogo -->
+  <!-- Barra de Beneficios -->
+  <section id="beneficios" class="beneficios-bar">
+    <div class="beneficio-item">
+      <i class="fa-solid fa-truck-fast"></i>
+      <div>
+        <h4>Envíos Nacionales</h4>
+        <p>Cobertura con Cargo Expreso</p>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div>
+        <h4>Pago Cifrado SSL</h4>
+        <p>Transacciones 100% Seguras</p>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <i class="fa-solid fa-award"></i>
+      <div>
+        <h4>Calidad Garantizada</h4>
+        <p>Confección y Bordado Local</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Catálogo -->
   <main id="catalogo">
-    <h2>Nuestros Productos</h2>
+    <div class="section-header">
+      <h2>Nuestro Catálogo de Productos</h2>
+      <p>Selecciona tus prendas favoritas y realiza tu compra online de forma sencilla.</p>
+    </div>
+
     <div id="productos-grid" class="grid-productos">
-      <!-- Los productos se cargarán dinámicamente con JS -->
+      <!-- Los productos con imágenes se cargarán dinámicamente -->
     </div>
   </main>
 
-  <!-- Pie de página -->
+  <!-- Pie de Página / Contacto -->
   <footer id="contacto">
-    <p>&copy; 2026 Catracho Wear HN - Todos los derechos reservados.</p>
-    <p>Contacto vía WhatsApp: +504 9999-9999 | Envíos a todo Honduras</p>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Catracho Wear HN</h3>
+        <p>Empresa orgullosamente hondureña dedicada al diseño, confección y comercialización de ropa con identidad nacional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo de Productos</a></li>
+          <li><a href="#beneficios">Políticas de Envío</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Atención al Cliente</h4>
+        <p><i class="fa-solid fa-location-dot"></i> San Pedro Sula, Cortés, Honduras</p>
+        <p><i class="fa-solid fa-phone"></i> +504 9999-9999</p>
+        <p><i class="fa-solid fa-envelope"></i> ventas@catrachowear.hn</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Catracho Wear HN. Proyecto Académico DIA-309 UNAH. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
-  <!-- Script para cargar el JSON estático -->
+  <!-- Script Carga Dinámica con Imágenes -->
   <script>
     fetch('productos.json')
       .then(response => response.json())
@@ -47,12 +114,30 @@
         const grid = document.getElementById('productos-grid');
         productos.forEach(p => {
           const card = document.createElement('div');
-          card.className = 'card';
+          card.className = 'card-producto';
           card.innerHTML = `
-            <h3>${p.nombre}</h3>
-            <p><strong>Categoría:</strong> ${p.categoria}</p>
-            <p class="precio">L. ${p.precio}.00 HNL</p>
-            <button class="btn-comprar" onclick="alert('Producto añadido al carrito (Modo Prueba)')">Añadir al Carrito</button>
+            <div class="card-image">
+              <span class="tag-categoria">${p.categoria}</span>
+              <img src="${p.imagen}" alt="${p.nombre}">
+            </div>
+            <div class="card-content">
+              <h3>${p.nombre}</h3>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <span>(4.8)</span>
+              </div>
+              <p class="descripcion">${p.descripcion}</p>
+              <div class="card-footer">
+                <span class="precio">L. ${p.precio}.00 <small>HNL</small></span>
+                <button class="btn-card" onclick="alert('¡${p.nombre} añadido al carrito con éxito!')">
+                  <i class="fa-solid fa-cart-plus"></i> Añadir
+                </button>
+              </div>
+            </div>
           `;
           grid.appendChild(card);
         });
