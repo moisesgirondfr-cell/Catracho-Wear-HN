@@ -1,0 +1,10 @@
+[
+  { "id": 1, "nombre": "Camiseta Catracha Azul", "categoria": "Casual", "precio": 499 },
+  { "id": 2, "nombre": "Camisa Polo Corporativa", "categoria": "Uniformes", "precio": 550 },
+  { "id": 3, "nombre": "Uniforme Empresarial Ejecutivo", "categoria": "B2B", "precio": 1200 },
+  { "id": 4, "nombre": "Uniforme Escolar Completo", "categoria": "Escolar", "precio": 850 },
+  { "id": 5, "nombre": "Conjunto Deportivo Sublimado", "categoria": "Deporte", "precio": 750 },
+  { "id": 6, "nombre": "Sudadera con Capucha Catracho", "categoria": "Abrigos", "precio": 650 },
+  { "id": 7, "nombre": "Gorra Bordada Tipo Béisbol", "categoria": "Accesorios", "precio": 350 },
+  { "id": 8, "nombre": "Bolso Ecológico de Tela", "categoria": "Accesorios", "precio": 150 }
+]
