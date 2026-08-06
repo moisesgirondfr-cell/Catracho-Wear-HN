@@ -180,7 +180,7 @@
     let productos = [];
     let carrito = JSON.parse(localStorage.getItem('cart_cw')) || [];
 
-    fetch('productos.json')
+    fetch('productos.json?v=2.0')
       .then(res => res.json())
       .then(data => { productos = data; renderProductos(); actualizarUI(); })
       .catch(() => actualizarUI());
