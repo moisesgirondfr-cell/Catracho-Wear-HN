@@ -4,26 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CATRACHOWEAR | Moda con Identidad Hondureña</title>
-  <link rel="stylesheet" href="styles.css?>=2.0">
-  <!-- Fuentes Google: Pacifico para el Logo/Categorías y Poppins para el texto general -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background-color: #dbe4ee; padding: 15px 3%; color: #1a2b49; }
+    .main-container { max-width: 1100px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 15px; }
+    
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px 15px 5px; flex-wrap: wrap; gap: 10px; }
+    .logo { font-family: 'Pacifico', cursive; font-size: 1.8rem; color: #1c355e; }
+    .nav-links a { text-decoration: none; color: #334155; margin: 0 10px; font-weight: 500; font-size: 0.9rem; }
+    .nav-links a.active { color: #1c355e; font-weight: 700; }
+    .nav-right { display: flex; align-items: center; gap: 15px; }
+    .account-link { text-decoration: none; color: #334155; font-size: 0.85rem; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: #1c355e; }
+    .cart-icon .badge { position: absolute; top: -8px; right: -10px; background: #1c355e; color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
+
+    .hero-card { position: relative; height: 260px; border-radius: 12px; overflow: hidden; background: linear-gradient(90deg, rgba(240,237,232,0.95) 0%, rgba(240,237,232,0.4) 60%), url('https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; display: flex; align-items: center; padding: 0 25px; }
+    .hero-text { max-width: 400px; z-index: 2; }
+    .hero-text h1 { font-size: 1.4rem; font-weight: 800; color: #1c355e; line-height: 1.2; margin-bottom: 8px; }
+    .hero-text p { font-size: 0.85rem; color: #475569; margin-bottom: 15px; }
+    .btn-hero { display: inline-block; background-color: #2b4c7e; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
+
+    .section-title { font-size: 1.1rem; color: #1c355e; margin: 20px 0 10px 0; }
+    .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+    .category-card { position: relative; height: 150px; border-radius: 10px; overflow: hidden; }
+    .category-card img { width: 100%; height: 100%; object-fit: cover; }
+    .category-title { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: 'Pacifico', cursive; font-size: 1.4rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.7); }
+
+    .products-grid-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+    .product-mini-card { background: #f8fafc; border-radius: 8px; padding: 10px; text-align: center; border: 1px solid #e2e8f0; }
+    .product-mini-card .img-box { height: 110px; margin-bottom: 8px; border-radius: 6px; overflow: hidden; }
+    .product-mini-card img { width: 100%; height: 100%; object-fit: cover; }
+    .product-mini-card h4 { font-size: 0.8rem; color: #334155; margin-bottom: 4px; }
+    .product-mini-card .price { font-size: 0.85rem; font-weight: 700; color: #1c355e; margin-bottom: 8px; }
+    .btn-add-mini { background: #cbd5e1; border: none; color: #1e293b; font-size: 0.75rem; padding: 6px 10px; border-radius: 4px; cursor: pointer; width: 100%; }
+
+    .info-section { margin-top: 25px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; }
+    .section-heading { font-size: 1.1rem; color: #1c355e; margin-bottom: 10px; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; }
+    .nosotros-content p { color: #475569; font-size: 0.85rem; line-height: 1.5; margin-bottom: 10px; }
+    .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 15px; }
+    .valor-box { background: white; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    .valor-box i { font-size: 1.4rem; color: #1c355e; margin-bottom: 5px; }
+
+    .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 10px; }
+    .contact-card { display: flex; align-items: center; gap: 12px; background: white; padding: 12px; border-radius: 8px; text-decoration: none; color: #1e293b; border: 1px solid #e2e8f0; }
+
+    .footer-bar { background-color: #1c355e; color: #ffffff; text-align: center; padding: 12px; margin-top: 20px; border-radius: 0 0 10px 10px; font-size: 0.8rem; }
+    .footer-bar a { color: white; text-decoration: none; margin: 0 5px; }
+
+    .cart-modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 3000; justify-content: center; align-items: center; }
+    .cart-modal-content { background: white; width: 90%; max-width: 420px; padding: 20px; border-radius: 10px; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .close-btn { font-size: 1.5rem; cursor: pointer; }
+    .btn-checkout { width: 100%; background: #1c355e; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+    @media (max-width: 600px) {
+      .categories-grid { grid-template-columns: 1fr; }
+      .hero-card { height: auto; padding: 25px 15px; }
+      .hero-text h1 { font-size: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO SUPERIOR -->
   <header class="navbar">
     <div class="logo">CATRACHOWEAR</div>
-    
     <nav class="nav-links">
       <a href="#inicio" class="active">Inicio</a>
       <a href="#tienda">Tienda</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#ayuda">Ayuda</a>
     </nav>
-
     <div class="nav-right">
-      <a href="#cuenta" class="account-link" onclick="mostrarCheckout()"><i class="fa-regular fa-user"></i> Mi Cuenta</a>
+      <a href="#cuenta" class="account-link" onclick="mostrarCheckout()"><i class="fa-regular fa-user"></i> Cuenta</a>
       <div class="cart-icon" onclick="toggleCarrito()">
         <i class="fa-solid fa-cart-shopping"></i>
         <span id="cart-count" class="badge">0</span>
@@ -31,10 +86,7 @@
     </div>
   </header>
 
-  <!-- CONTENEDOR PRINCIPAL TIPO MARCO -->
   <main class="main-container">
-    
-    <!-- HERO BANNER PRINCIPAL -->
     <section id="inicio" class="hero-card">
       <div class="hero-text">
         <h1>MODA CON IDENTIDAD HONDUREÑA</h1>
@@ -43,11 +95,8 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DE CATEGORÍAS PRINCIPALES Y TIENDA -->
-    <section id="tienda" class="section-categories-and-products">
+    <section id="tienda">
       <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Categorías Principales</h3>
-      
-      <!-- Tarjetas de Categorías Principales -->
       <div class="categories-grid">
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80" alt="Hombre">
@@ -63,140 +112,66 @@
         </div>
       </div>
 
-      <h3 class="section-title"><i class="fa-solid fa-shirt"></i> Catálogo de Productos</h3>
-      <!-- Tarjetas de Productos Rápido -->
-      <div class="products-grid-mini" id="productos-grid">
-        <!-- Carga dinámica -->
-      </div>
+      <h3 class="section-title"><i class="fa-solid fa-shirt"></i> Catálogo Artesanal</h3>
+      <div class="products-grid-mini" id="productos-grid"></div>
     </section>
 
-    <!-- SECCIÓN NOSOTROS -->
     <section id="nosotros" class="info-section">
       <h2 class="section-heading"><i class="fa-solid fa-building"></i> Sobre Catracho Wear HN</h2>
       <div class="nosotros-content">
-        <p><strong>Catracho Wear HN</strong> es una empresa orgullosamente hondureña fundada en el año 2021 en San Pedro Sula, Cortés, el corazón textil e industrial del país.</p>
-        <p>Nos dedicamos al diseño, confección y comercialización de prendas casuales, uniformes corporativos e indumentaria deportiva que resaltan el orgullo y la identidad catracha. Combinamos técnicas de sublimación digital y bordado computarizado de alta definición para brindar prendas duraderas y de máxima calidad.</p>
+        <p><strong>Catracho Wear HN</strong> es una empresa hondureña fundada en 2021 en San Pedro Sula, Cortés. Nos especializamos en la confección de prendas artesanales, uniformes y moda autóctona que resalta nuestra cultura.</p>
         <div class="valores-grid">
-          <div class="valor-box">
-            <i class="fa-solid fa-heart"></i>
-            <h4>Identidad Catracha</h4>
-            <p>Diseños inspirados en nuestra cultura y símbolos patrios.</p>
-          </div>
-          <div class="valor-box">
-            <i class="fa-solid fa-award"></i>
-            <h4>Calidad Premium</h4>
-            <p>Telas 100% algodón hilado y confección resistente.</p>
-          </div>
-          <div class="valor-box">
-            <i class="fa-solid fa-truck-fast"></i>
-            <h4>Envíos Nacionales</h4>
-            <p>Cobertura confiable a todo el territorio hondureño.</p>
-          </div>
+          <div class="valor-box"><i class="fa-solid fa-heart"></i><h4>Identidad</h4><p>Orgullo catracho en cada diseño.</p></div>
+          <div class="valor-box"><i class="fa-solid fa-award"></i><h4>Calidad</h4><p>Algodón e hilos de primera.</p></div>
+          <div class="valor-box"><i class="fa-solid fa-truck-fast"></i><h4>Envíos</h4><p>Cobertura a todo Honduras.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN AYUDA Y CONTACTO -->
-    <section id="ayuda" class="info-section ayuda-section">
-      <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda y Soporte</h2>
-      <p class="ayuda-intro">¿Tienes alguna consulta sobre tu pedido, tallas o compras al por mayor? ¡Estamos para atenderte de inmediato!</p>
-
+    <section id="ayuda" class="info-section">
+      <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda</h2>
       <div class="contact-cards">
-        <a href="https://wa.me/50493554091?text=Hola%20Catracho%20Wear,%20necesito%20ayuda%20con%20un%20pedido" target="_blank" class="contact-card whatsapp">
-          <i class="fa-brands fa-whatsapp"></i>
-          <div>
-            <h4>Atención por WhatsApp</h4>
-            <p>+504 9355-4091</p>
-            <small>Respuesta rápida | Lunes a Sábado</small>
-          </div>
+        <a href="https://wa.me/50493554091" target="_blank" class="contact-card">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.8rem; color:#25d366;"></i>
+          <div><h4>WhatsApp Directo</h4><p>+504 9355-4091</p></div>
         </a>
-
-        <a href="mailto:contacto@catrachowearhn.com" class="contact-card email">
-          <i class="fa-regular fa-envelope"></i>
-          <div>
-            <h4>Correo Electrónico</h4>
-            <p>contacto@catrachowearhn.com</p>
-            <small>Atención B2B y Cotizaciones</small>
-          </div>
+        <a href="mailto:contacto@catrachowearhn.com" class="contact-card">
+          <i class="fa-regular fa-envelope" style="font-size: 1.8rem; color:#1c355e;"></i>
+          <div><h4>Correo Electrónico</h4><p>contacto@catrachowearhn.com</p></div>
         </a>
       </div>
     </section>
 
-    <!-- FOOTER AZUL INFERIOR -->
     <footer class="footer-bar">
-      <a href="#inicio">Inicio</a> • 
-      <a href="#tienda">Tienda</a> • 
-      <a href="#nosotros">Nosotros</a> • 
-      <a href="#ayuda">Ayuda</a> • 
-      <a href="https://wa.me/50493554091" target="_blank">WhatsApp Directo</a>
+      Envíos • Atención • Redes • Privacidad • Términos
     </footer>
-
   </main>
 
-  <!-- MODAL DEL CARRITO -->
   <div id="modal-carrito" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
-        <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h3>
+        <h3>Tu Carrito</h3>
         <span class="close-btn" onclick="toggleCarrito()">&times;</span>
       </div>
-      <div id="cart-items-container" class="cart-body"></div>
-      <div class="cart-footer">
-        <div class="summary-row">
-          <span>Subtotal:</span>
-          <strong id="cart-subtotal">L. 0.00 HNL</strong>
-        </div>
-        <div class="summary-row">
-          <span>Envío Nacional:</span>
-          <strong>L. 120.00 HNL</strong>
-        </div>
-        <div class="summary-row total-row">
-          <span>Total:</span>
-          <strong id="cart-total">L. 0.00 HNL</strong>
-        </div>
-        <button class="btn-checkout" onclick="mostrarCheckout()">Proceder al Pago con Pasarela <i class="fa-solid fa-arrow-right"></i></button>
+      <div id="cart-items-container"></div>
+      <div style="margin-top: 15px;">
+        <p>Total: <strong id="cart-total">L. 0.00</strong></p>
+        <button class="btn-checkout" onclick="mostrarCheckout()">Proceder al Pago</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL CHECKOUT / PASARELA DE PAGO -->
   <div id="modal-checkout" class="cart-modal">
-    <div class="cart-modal-content checkout-box">
+    <div class="cart-modal-content">
       <div class="cart-header">
-        <h3><i class="fa-solid fa-lock"></i> Pasarela de Pago Seguro</h3>
+        <h3>Pasarela de Pago Seguro</h3>
         <span class="close-btn" onclick="cerrarCheckout()">&times;</span>
       </div>
-      
-      <form onsubmit="procesarPago(event)" class="checkout-form">
-        <h4>1. Datos de Contacto y Envío</h4>
-        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required>
-        <div class="form-row">
-          <input type="email" placeholder="Correo Electrónico" required>
-          <input type="tel" placeholder="Teléfono / WhatsApp" required>
-        </div>
-        <input type="text" placeholder="Ciudad y Dirección de Entrega" required>
-
-        <h4>2. Método de Pago</h4>
-        <div class="payment-options">
-          <label><input type="radio" name="pago" value="tarjeta" checked onclick="cambiarMetodo('tarjeta')"> <i class="fa-solid fa-credit-card"></i> Tarjeta Crédito/Débito (Stripe/PCI-DSS)</label>
-          <label><input type="radio" name="pago" value="paypal" onclick="cambiarMetodo('paypal')"> <i class="fa-brands fa-paypal"></i> PayPal Sandbox</label>
-          <label><input type="radio" name="pago" value="efectivo" onclick="cambiarMetodo('efectivo')"> <i class="fa-solid fa-money-bill-wave"></i> Pago Contra Entrega (Efectivo)</label>
-        </div>
-
-        <div id="card-inputs" class="card-inputs">
-          <input type="text" placeholder="Número de Tarjeta (4242 4242 4242 4242)" maxlength="16" required>
-          <div class="form-row">
-            <input type="text" placeholder="MM/AA" maxlength="5" required>
-            <input type="password" placeholder="CVV" maxlength="3" required>
-          </div>
-        </div>
-
-        <div class="total-checkout-display">
-          <span>Monto Final:</span>
-          <strong id="checkout-monto-total">L. 0.00 HNL</strong>
-        </div>
-
-        <button type="submit" class="btn-confirm-pay"><i class="fa-solid fa-check-circle"></i> Confirmar y Pagar</button>
+      <form onsubmit="procesarPago(event)">
+        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required style="width:100%; padding:8px; margin-bottom:8px;">
+        <input type="tel" placeholder="WhatsApp" required style="width:100%; padding:8px; margin-bottom:8px;">
+        <p style="margin: 10px 0;">Método: <strong>Tarjeta / Pasarela Simulada</strong></p>
+        <button type="submit" class="btn-checkout">Confirmar Pedido</button>
       </form>
     </div>
   </div>
@@ -205,28 +180,22 @@
     let productos = [];
     let carrito = JSON.parse(localStorage.getItem('cart_cw')) || [];
 
-    // Cargar productos
     fetch('productos.json')
       .then(res => res.json())
-      .then(data => {
-        productos = data;
-        renderProductos();
-        actualizarUI();
-      }).catch(() => {
-        actualizarUI();
-      });
+      .then(data => { productos = data; renderProductos(); actualizarUI(); })
+      .catch(() => actualizarUI());
 
     function renderProductos() {
       const grid = document.getElementById('productos-grid');
-      if (!grid) return;
+      if(!grid) return;
       grid.innerHTML = '';
       productos.forEach(p => {
         grid.innerHTML += `
           <div class="product-mini-card">
             <div class="img-box"><img src="${p.imagen}" alt="${p.nombre}"></div>
             <h4>${p.nombre}</h4>
-            <p class="price">L. ${p.precio}.00 HNL</p>
-            <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
+            <p class="price">L. ${p.precio}.00</p>
+            <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})">Añadir al carrito</button>
           </div>
         `;
       });
@@ -244,96 +213,37 @@
 
     function toggleCarrito(abrir = false) {
       const modal = document.getElementById('modal-carrito');
-      if(abrir) modal.style.display = 'flex';
-      else modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+      modal.style.display = abrir ? 'flex' : (modal.style.display === 'flex' ? 'none' : 'flex');
     }
 
     function mostrarCheckout() {
-      if (carrito.length === 0) {
-        alert("Agrega al menos un producto al carrito para ir al pago.");
-        return;
-      }
+      if(carrito.length === 0) return alert("El carrito está vacío");
       toggleCarrito(false);
       document.getElementById('modal-checkout').style.display = 'flex';
     }
 
-    function cerrarCheckout() {
-      document.getElementById('modal-checkout').style.display = 'none';
-    }
-
-    function cambiarMetodo(metodo) {
-      const inputs = document.getElementById('card-inputs');
-      if (metodo === 'tarjeta') {
-        inputs.style.display = 'block';
-      } else {
-        inputs.style.display = 'none';
-      }
-    }
+    function cerrarCheckout() { document.getElementById('modal-checkout').style.display = 'none'; }
 
     function actualizarUI() {
       const count = document.getElementById('cart-count');
       const container = document.getElementById('cart-items-container');
-      const subtotalElem = document.getElementById('cart-subtotal');
       const totalElem = document.getElementById('cart-total');
-      const checkoutTotal = document.getElementById('checkout-monto-total');
-      
-      let totalItems = 0;
-      let subtotal = 0;
+      let totalItems = 0, totalMonto = 0;
       container.innerHTML = '';
 
-      if (carrito.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:#64748b; padding:20px;">El carrito está vacío.</p>';
-      } else {
-        carrito.forEach(item => {
-          totalItems += item.cantidad;
-          subtotal += item.precio * item.cantidad;
-          container.innerHTML += `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
-              <div>
-                <strong>${item.nombre}</strong><br>
-                <small>L. ${item.precio}.00 x ${item.cantidad}</small>
-              </div>
-              <div>
-                <button onclick="cambiarCant(${item.id}, -1)" style="padding:2px 6px;">-</button>
-                <span style="margin:0 4px;">${item.cantidad}</span>
-                <button onclick="cambiarCant(${item.id}, 1)" style="padding:2px 6px;">+</button>
-                <button onclick="eliminar(${item.id})" style="color:red; background:none; border:none; margin-left:8px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      const envio = carrito.length > 0 ? 120 : 0;
-      const total = subtotal + envio;
+      carrito.forEach(item => {
+        totalItems += item.cantidad;
+        totalMonto += item.precio * item.cantidad;
+        container.innerHTML += `<div style="display:flex; justify-between; margin-bottom:5px;"><span>${item.nombre} (x${item.cantidad})</span><strong>L. ${item.precio * item.cantidad}</strong></div>`;
+      });
 
       count.innerText = totalItems;
-      subtotalElem.innerText = `L. ${subtotal.toFixed(2)} HNL`;
-      totalElem.innerText = `L. ${total.toFixed(2)} HNL`;
-      checkoutTotal.innerText = `L. ${total.toFixed(2)} HNL`;
-    }
-
-    function cambiarCant(id, delta) {
-      const item = carrito.find(i => i.id === id);
-      if (item) {
-        item.cantidad += delta;
-        if (item.cantidad <= 0) carrito = carrito.filter(i => i.id !== id);
-      }
-      localStorage.setItem('cart_cw', JSON.stringify(carrito));
-      actualizarUI();
-    }
-
-    function eliminar(id) {
-      carrito = carrito.filter(i => i.id !== id);
-      localStorage.setItem('cart_cw', JSON.stringify(carrito));
-      actualizarUI();
+      totalElem.innerText = `L. ${totalMonto.toFixed(2)} HNL`;
     }
 
     function procesarPago(e) {
       e.preventDefault();
-      const cliente = document.getElementById('nombre-cliente').value;
-      const numOrden = Math.floor(100000 + Math.random() * 900000);
-      alert(`¡Muchas gracias por tu compra, ${cliente}!\n\nOrden #${numOrden} recibida con éxito mediante Pasarela Segura.\nNos pondremos en contacto contigo por WhatsApp (+504 9355-4091) para coordinar el envío.`);
+      alert("¡Gracias por tu compra! Tu pedido fue procesado con éxito.");
       carrito = [];
       localStorage.setItem('cart_cw', JSON.stringify(carrito));
       actualizarUI();
