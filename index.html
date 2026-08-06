@@ -23,7 +23,7 @@
     </nav>
 
     <div class="nav-right">
-      <a href="#cuenta" class="account-link"><i class="fa-regular fa-user"></i> Cuenta</a>
+      <a href="#cuenta" class="account-link" onclick="mostrarCheckout()"><i class="fa-regular fa-user"></i> Mi Cuenta</a>
       <div class="cart-icon" onclick="toggleCarrito()">
         <i class="fa-solid fa-cart-shopping"></i>
         <span id="cart-count" class="badge">0</span>
@@ -31,21 +31,22 @@
     </div>
   </header>
 
-  <!-- CONTENEDOR PRINCIPAL TIPO TARJETA (Como en la maqueta) -->
+  <!-- CONTENEDOR PRINCIPAL TIPO MARCO -->
   <main class="main-container">
     
     <!-- HERO BANNER PRINCIPAL -->
     <section id="inicio" class="hero-card">
-      <div class="hero-overlay"></div>
       <div class="hero-text">
         <h1>MODA CON IDENTIDAD HONDUREÑA</h1>
-        <p>Prendas que conectan cultura, orgullo y estilo.</p>
+        <p>Prendas que conectan cultura, orgullo y estilo confeccionadas en San Pedro Sula.</p>
         <a href="#tienda" class="btn-hero">VER COLECCIÓN</a>
       </div>
     </section>
 
     <!-- SECCIÓN DE CATEGORÍAS PRINCIPALES Y TIENDA -->
     <section id="tienda" class="section-categories-and-products">
+      <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Categorías Principales</h3>
+      
       <!-- Tarjetas de Categorías Principales -->
       <div class="categories-grid">
         <div class="category-card">
@@ -62,38 +63,141 @@
         </div>
       </div>
 
-      <!-- Tarjetas de Productos Rapidos -->
+      <h3 class="section-title"><i class="fa-solid fa-shirt"></i> Catálogo de Productos</h3>
+      <!-- Tarjetas de Productos Rápido -->
       <div class="products-grid-mini" id="productos-grid">
-        <!-- Se cargan dinámicamente desde productos.json o JS -->
+        <!-- Carga dinámica -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="info-section">
+      <h2 class="section-heading"><i class="fa-solid fa-building"></i> Sobre Catracho Wear HN</h2>
+      <div class="nosotros-content">
+        <p><strong>Catracho Wear HN</strong> es una empresa orgullosamente hondureña fundada en el año 2021 en San Pedro Sula, Cortés, el corazón textil e industrial del país.</p>
+        <p>Nos dedicamos al diseño, confección y comercialización de prendas casuales, uniformes corporativos e indumentaria deportiva que resaltan el orgullo y la identidad catracha. Combinamos técnicas de sublimación digital y bordado computarizado de alta definición para brindar prendas duraderas y de máxima calidad.</p>
+        <div class="valores-grid">
+          <div class="valor-box">
+            <i class="fa-solid fa-heart"></i>
+            <h4>Identidad Catracha</h4>
+            <p>Diseños inspirados en nuestra cultura y símbolos patrios.</p>
+          </div>
+          <div class="valor-box">
+            <i class="fa-solid fa-award"></i>
+            <h4>Calidad Premium</h4>
+            <p>Telas 100% algodón hilado y confección resistente.</p>
+          </div>
+          <div class="valor-box">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h4>Envíos Nacionales</h4>
+            <p>Cobertura confiable a todo el territorio hondureño.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN AYUDA Y CONTACTO -->
+    <section id="ayuda" class="info-section ayuda-section">
+      <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda y Soporte</h2>
+      <p class="ayuda-intro">¿Tienes alguna consulta sobre tu pedido, tallas o compras al por mayor? ¡Estamos para atenderte de inmediato!</p>
+
+      <div class="contact-cards">
+        <a href="https://wa.me/50493554091?text=Hola%20Catracho%20Wear,%20necesito%20ayuda%20con%20un%20pedido" target="_blank" class="contact-card whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div>
+            <h4>Atención por WhatsApp</h4>
+            <p>+504 9355-4091</p>
+            <small>Respuesta rápida | Lunes a Sábado</small>
+          </div>
+        </a>
+
+        <a href="mailto:contacto@catrachowearhn.com" class="contact-card email">
+          <i class="fa-regular fa-envelope"></i>
+          <div>
+            <h4>Correo Electrónico</h4>
+            <p>contacto@catrachowearhn.com</p>
+            <small>Atención B2B y Cotizaciones</small>
+          </div>
+        </a>
       </div>
     </section>
 
     <!-- FOOTER AZUL INFERIOR -->
     <footer class="footer-bar">
-      <a href="#envios">Envíos</a> • 
-      <a href="#atencion">Atención</a> • 
-      <a href="#redes">Redes</a> • 
-      <a href="#privacidad">Privacidad</a> • 
-      <a href="#terminos">Términos</a>
+      <a href="#inicio">Inicio</a> • 
+      <a href="#tienda">Tienda</a> • 
+      <a href="#nosotros">Nosotros</a> • 
+      <a href="#ayuda">Ayuda</a> • 
+      <a href="https://wa.me/50493554091" target="_blank">WhatsApp Directo</a>
     </footer>
 
   </main>
 
-  <!-- MODAL DE CARRITO -->
+  <!-- MODAL DEL CARRITO -->
   <div id="modal-carrito" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
-        <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h3>
+        <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h3>
         <span class="close-btn" onclick="toggleCarrito()">&times;</span>
       </div>
       <div id="cart-items-container" class="cart-body"></div>
       <div class="cart-footer">
         <div class="summary-row">
+          <span>Subtotal:</span>
+          <strong id="cart-subtotal">L. 0.00 HNL</strong>
+        </div>
+        <div class="summary-row">
+          <span>Envío Nacional:</span>
+          <strong>L. 120.00 HNL</strong>
+        </div>
+        <div class="summary-row total-row">
           <span>Total:</span>
           <strong id="cart-total">L. 0.00 HNL</strong>
         </div>
-        <button class="btn-checkout" onclick="alert('¡Procesando orden con éxito!')">Proceder al Pago</button>
+        <button class="btn-checkout" onclick="mostrarCheckout()">Proceder al Pago con Pasarela <i class="fa-solid fa-arrow-right"></i></button>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL CHECKOUT / PASARELA DE PAGO -->
+  <div id="modal-checkout" class="cart-modal">
+    <div class="cart-modal-content checkout-box">
+      <div class="cart-header">
+        <h3><i class="fa-solid fa-lock"></i> Pasarela de Pago Seguro</h3>
+        <span class="close-btn" onclick="cerrarCheckout()">&times;</span>
+      </div>
+      
+      <form onsubmit="procesarPago(event)" class="checkout-form">
+        <h4>1. Datos de Contacto y Envío</h4>
+        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required>
+        <div class="form-row">
+          <input type="email" placeholder="Correo Electrónico" required>
+          <input type="tel" placeholder="Teléfono / WhatsApp" required>
+        </div>
+        <input type="text" placeholder="Ciudad y Dirección de Entrega" required>
+
+        <h4>2. Método de Pago</h4>
+        <div class="payment-options">
+          <label><input type="radio" name="pago" value="tarjeta" checked onclick="cambiarMetodo('tarjeta')"> <i class="fa-solid fa-credit-card"></i> Tarjeta Crédito/Débito (Stripe/PCI-DSS)</label>
+          <label><input type="radio" name="pago" value="paypal" onclick="cambiarMetodo('paypal')"> <i class="fa-brands fa-paypal"></i> PayPal Sandbox</label>
+          <label><input type="radio" name="pago" value="efectivo" onclick="cambiarMetodo('efectivo')"> <i class="fa-solid fa-money-bill-wave"></i> Pago Contra Entrega (Efectivo)</label>
+        </div>
+
+        <div id="card-inputs" class="card-inputs">
+          <input type="text" placeholder="Número de Tarjeta (4242 4242 4242 4242)" maxlength="16" required>
+          <div class="form-row">
+            <input type="text" placeholder="MM/AA" maxlength="5" required>
+            <input type="password" placeholder="CVV" maxlength="3" required>
+          </div>
+        </div>
+
+        <div class="total-checkout-display">
+          <span>Monto Final:</span>
+          <strong id="checkout-monto-total">L. 0.00 HNL</strong>
+        </div>
+
+        <button type="submit" class="btn-confirm-pay"><i class="fa-solid fa-check-circle"></i> Confirmar y Pagar</button>
+      </form>
     </div>
   </div>
 
@@ -101,28 +205,32 @@
     let productos = [];
     let carrito = JSON.parse(localStorage.getItem('cart_cw')) || [];
 
-    // Cargar datos
+    // Cargar productos
     fetch('productos.json')
       .then(res => res.json())
       .then(data => {
         productos = data;
-        const grid = document.getElementById('productos-grid');
-        grid.innerHTML = '';
-        productos.slice(0, 4).forEach(p => {
-          grid.innerHTML += `
-            <div class="product-mini-card">
-              <div class="img-box"><img src="${p.imagen}" alt="${p.nombre}"></div>
-              <h4>${p.nombre}</h4>
-              <p class="price">L. ${p.precio}.00</p>
-              <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})">Añadir al carrito</button>
-            </div>
-          `;
-        });
+        renderProductos();
         actualizarUI();
       }).catch(() => {
-        // En caso de que cargue local sin server
         actualizarUI();
       });
+
+    function renderProductos() {
+      const grid = document.getElementById('productos-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      productos.forEach(p => {
+        grid.innerHTML += `
+          <div class="product-mini-card">
+            <div class="img-box"><img src="${p.imagen}" alt="${p.nombre}"></div>
+            <h4>${p.nombre}</h4>
+            <p class="price">L. ${p.precio}.00 HNL</p>
+            <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
+          </div>
+        `;
+      });
+    }
 
     function agregarAlCarrito(id) {
       const prod = productos.find(p => p.id === id);
@@ -140,34 +248,96 @@
       else modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
     }
 
+    function mostrarCheckout() {
+      if (carrito.length === 0) {
+        alert("Agrega al menos un producto al carrito para ir al pago.");
+        return;
+      }
+      toggleCarrito(false);
+      document.getElementById('modal-checkout').style.display = 'flex';
+    }
+
+    function cerrarCheckout() {
+      document.getElementById('modal-checkout').style.display = 'none';
+    }
+
+    function cambiarMetodo(metodo) {
+      const inputs = document.getElementById('card-inputs');
+      if (metodo === 'tarjeta') {
+        inputs.style.display = 'block';
+      } else {
+        inputs.style.display = 'none';
+      }
+    }
+
     function actualizarUI() {
       const count = document.getElementById('cart-count');
       const container = document.getElementById('cart-items-container');
+      const subtotalElem = document.getElementById('cart-subtotal');
       const totalElem = document.getElementById('cart-total');
+      const checkoutTotal = document.getElementById('checkout-monto-total');
       
       let totalItems = 0;
-      let totalMonto = 0;
+      let subtotal = 0;
       container.innerHTML = '';
 
-      carrito.forEach(item => {
-        totalItems += item.cantidad;
-        totalMonto += item.precio * item.cantidad;
-        container.innerHTML += `
-          <div style="display:flex; justify-between; align-items:center; margin-bottom:10px;">
-            <div><strong>${item.nombre}</strong><br><small>L. ${item.precio} x ${item.cantidad}</small></div>
-            <button onclick="eliminar(${item.id})" style="color:red; background:none; border:none; cursor:pointer;">&times;</button>
-          </div>
-        `;
-      });
+      if (carrito.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#64748b; padding:20px;">El carrito está vacío.</p>';
+      } else {
+        carrito.forEach(item => {
+          totalItems += item.cantidad;
+          subtotal += item.precio * item.cantidad;
+          container.innerHTML += `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+              <div>
+                <strong>${item.nombre}</strong><br>
+                <small>L. ${item.precio}.00 x ${item.cantidad}</small>
+              </div>
+              <div>
+                <button onclick="cambiarCant(${item.id}, -1)" style="padding:2px 6px;">-</button>
+                <span style="margin:0 4px;">${item.cantidad}</span>
+                <button onclick="cambiarCant(${item.id}, 1)" style="padding:2px 6px;">+</button>
+                <button onclick="eliminar(${item.id})" style="color:red; background:none; border:none; margin-left:8px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      const envio = carrito.length > 0 ? 120 : 0;
+      const total = subtotal + envio;
 
       count.innerText = totalItems;
-      totalElem.innerText = `L. ${totalMonto.toFixed(2)} HNL`;
+      subtotalElem.innerText = `L. ${subtotal.toFixed(2)} HNL`;
+      totalElem.innerText = `L. ${total.toFixed(2)} HNL`;
+      checkoutTotal.innerText = `L. ${total.toFixed(2)} HNL`;
+    }
+
+    function cambiarCant(id, delta) {
+      const item = carrito.find(i => i.id === id);
+      if (item) {
+        item.cantidad += delta;
+        if (item.cantidad <= 0) carrito = carrito.filter(i => i.id !== id);
+      }
+      localStorage.setItem('cart_cw', JSON.stringify(carrito));
+      actualizarUI();
     }
 
     function eliminar(id) {
       carrito = carrito.filter(i => i.id !== id);
       localStorage.setItem('cart_cw', JSON.stringify(carrito));
       actualizarUI();
+    }
+
+    function procesarPago(e) {
+      e.preventDefault();
+      const cliente = document.getElementById('nombre-cliente').value;
+      const numOrden = Math.floor(100000 + Math.random() * 900000);
+      alert(`¡Muchas gracias por tu compra, ${cliente}!\n\nOrden #${numOrden} recibida con éxito mediante Pasarela Segura.\nNos pondremos en contacto contigo por WhatsApp (+504 9355-4091) para coordinar el envío.`);
+      carrito = [];
+      localStorage.setItem('cart_cw', JSON.stringify(carrito));
+      actualizarUI();
+      cerrarCheckout();
     }
   </script>
 </body>
