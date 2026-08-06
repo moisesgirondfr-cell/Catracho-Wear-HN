@@ -5,15 +5,15 @@
     "categoria": "Casual",
     "precio": 499,
     "descripcion": "Camiseta 100% algodón hilado de alta suavidad con diseño exclusivo de orgullo catracho.",
-    "imagen": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80"
+    "imagen": "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 2,
     "nombre": "Camisa Polo Corporativa Ejecutiva",
     "categoria": "Uniformes",
     "precio": 550,
-    "descripcion": "Camisa tipo polo de confección nacional con bordado fino computarizado.",
-    "imagen": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80"
+    "descripcion": "Camisa tipo polo en tono azul ejecutivo de confección nacional con cuello tejido y bordado fino.",
+    "imagen": "https://images.unsplash.com/photo-1625910513413-4ec35f58c7e9?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "categoria": "B2B Corporativo",
     "precio": 1200,
     "descripcion": "Conjunto formal de vestir diseñado para personal de oficina e instituciones.",
-    "imagen": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80"
+    "imagen": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "categoria": "Escolar",
     "precio": 850,
     "descripcion": "Confección resistente para uso diario escolar con telas de primera calidad.",
-    "imagen": "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=800&q=80"
+    "imagen": "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "categoria": "Deporte",
     "precio": 750,
     "descripcion": "Indumentaria deportiva transpirable para equipos, academias y ligas.",
-    "imagen": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+    "imagen": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "categoria": "Abrigos",
     "precio": 650,
     "descripcion": "Sudadera con capucha y felpa interior para la temporada de frío.",
-    "imagen": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
+    "imagen": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "categoria": "Accesorios",
     "precio": 350,
     "descripcion": "Gorra estructurada ajustable con bordado 3D del logo de Honduras.",
-    "imagen": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80"
+    "imagen": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": 8,
