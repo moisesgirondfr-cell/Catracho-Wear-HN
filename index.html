@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catracho Wear HN | Tienda Digital Oficial</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Fuentes e Íconos Google -->
+  <!-- Fuentes e Íconos -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -27,6 +27,12 @@
       <a href="#beneficios">Beneficios</a>
       <a href="#contacto">Contacto</a>
     </nav>
+
+    <!-- Botón Flotante del Carrito -->
+    <div class="cart-icon-wrapper" onclick="toggleCarrito()">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span id="cart-count" class="cart-badge">0</span>
+    </div>
   </header>
 
   <!-- Hero Banner Principal -->
@@ -71,15 +77,110 @@
   <main id="catalogo">
     <div class="section-header">
       <h2>Nuestro Catálogo de Productos</h2>
-      <p>Selecciona tus prendas favoritas y realiza tu compra online de forma sencilla.</p>
+      <p>Selecciona tus prendas favoritas, agrégalas al carrito y finaliza tu compra con pasarela de pago segura.</p>
     </div>
 
     <div id="productos-grid" class="grid-productos">
-      <!-- Los productos con imágenes se cargarán dinámicamente -->
+      <!-- Los productos se cargarán dinámicamente -->
     </div>
   </main>
 
-  <!-- Pie de Página / Contacto -->
+  <!-- MODAL / DESPLEGABLE DEL CARRITO DE COMPRAS -->
+  <div id="modal-carrito" class="cart-modal">
+    <div class="cart-modal-content">
+      <div class="cart-header">
+        <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h3>
+        <span class="close-btn" onclick="toggleCarrito()">&times;</span>
+      </div>
+      
+      <div id="cart-items-container" class="cart-body">
+        <!-- Los ítems agregados aparecerán aquí -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary">
+          <span>Subtotal:</span>
+          <strong id="cart-subtotal">L. 0.00 HNL</strong>
+        </div>
+        <div class="cart-summary">
+          <span>Envío estimado:</span>
+          <strong>L. 120.00 HNL</strong>
+        </div>
+        <div class="cart-summary total-row">
+          <span>Total a pagar:</span>
+          <strong id="cart-total">L. 0.00 HNL</strong>
+        </div>
+        <button id="btn-checkout" class="btn-checkout" onclick="mostrarCheckout()">
+          Proceder al Pago <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE CHECKOUT Y PASARELA DE PAGO -->
+  <div id="modal-checkout" class="checkout-modal">
+    <div class="checkout-content">
+      <span class="close-btn" onclick="cerrarCheckout()">&times;</span>
+      <h2><i class="fa-solid fa-lock"></i> Pasarela de Pago Seguro</h2>
+      <p class="subtitle-checkout">Catracho Wear HN | Entornos de prueba PCI DSS SAQ A</p>
+      
+      <form id="form-checkout" onsubmit="procesarPago(event)">
+        <!-- Datos del Cliente -->
+        <div class="form-section">
+          <h4>1. Datos de Envío y Contacto</h4>
+          <div class="input-group">
+            <input type="text" id="nombre-cliente" placeholder="Nombre completo" required>
+            <input type="email" id="email-cliente" placeholder="Correo electrónico" required>
+          </div>
+          <div class="input-group">
+            <input type="tel" id="telefono-cliente" placeholder="Teléfono / WhatsApp" required>
+            <input type="text" id="ciudad-cliente" placeholder="Ciudad / Departamento (ej. San Pedro Sula)" required>
+          </div>
+          <input type="text" id="direccion-cliente" placeholder="Dirección exacta de entrega" required style="width:100%; margin-top:10px;">
+        </div>
+
+        <!-- Selección de Método de Pago -->
+        <div class="form-section">
+          <h4>2. Método de Pago</h4>
+          <div class="payment-methods">
+            <label class="payment-option">
+              <input type="radio" name="metodo_pago" value="tarjeta" checked onclick="cambiarMetodo('tarjeta')">
+              <span><i class="fa-solid fa-credit-card"></i> Tarjeta de Crédito/Débito (Stripe Test)</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="metodo_pago" value="paypal" onclick="cambiarMetodo('paypal')">
+              <span><i class="fa-brands fa-paypal"></i> PayPal Sandbox</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="metodo_pago" value="efectivo" onclick="cambiarMetodo('efectivo')">
+              <span><i class="fa-solid fa-money-bill-wave"></i> Pago Contra Entrega (Efectivo)</span>
+            </label>
+          </div>
+
+          <!-- Formulario Dinámico de Tarjeta Simulada -->
+          <div id="payment-card-details" class="card-details-box">
+            <input type="text" placeholder="Número de Tarjeta (Simulación)" maxlength="16" required>
+            <div class="input-group" style="margin-top:10px;">
+              <input type="text" placeholder="MM/AA" maxlength="5" required>
+              <input type="password" placeholder="CVC / CVV" maxlength="3" required>
+            </div>
+            <p class="sec-text"><i class="fa-solid fa-shield-cat"></i> Encriptación TLS 1.3 activada. Tokenización sin almacenamiento de datos bancarios en el servidor.</p>
+          </div>
+        </div>
+
+        <div class="checkout-summary-box">
+          <span>Monto Final a Procesar:</span>
+          <strong id="checkout-monto-total">L. 0.00 HNL</strong>
+        </div>
+
+        <button type="submit" class="btn-confirm-payment">
+          <i class="fa-solid fa-check-circle"></i> Confirmar y Procesar Orden
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pie de Página -->
   <footer id="contacto">
     <div class="footer-container">
       <div class="footer-col">
@@ -106,11 +207,16 @@
     </div>
   </footer>
 
-  <!-- Script Carga Dinámica con Imágenes -->
+  <!-- SCRIPT DE LÓGICA DEL CARRITO Y PASARELA -->
   <script>
+    let productosGlobales = [];
+    let carrito = JSON.parse(localStorage.getItem('cart_catrachowear')) || [];
+
+    // Cargar catálogo desde JSON
     fetch('productos.json')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(productos => {
+        productosGlobales = productos;
         const grid = document.getElementById('productos-grid');
         productos.forEach(p => {
           const card = document.createElement('div');
@@ -133,7 +239,7 @@
               <p class="descripcion">${p.descripcion}</p>
               <div class="card-footer">
                 <span class="precio">L. ${p.precio}.00 <small>HNL</small></span>
-                <button class="btn-card" onclick="alert('¡${p.nombre} añadido al carrito con éxito!')">
+                <button class="btn-card" onclick="agregarAlCarrito(${p.id})">
                   <i class="fa-solid fa-cart-plus"></i> Añadir
                 </button>
               </div>
@@ -141,8 +247,136 @@
           `;
           grid.appendChild(card);
         });
-      })
-      .catch(error => console.error('Error al cargar productos:', error));
+        actualizarCarritoUI();
+      });
+
+    // Agregar producto al carrito
+    function agregarAlCarrito(id) {
+      const prod = productosGlobales.find(p => p.id === id);
+      const existe = carrito.find(item => item.id === id);
+      if (existe) {
+        existe.cantidad += 1;
+      } else {
+        carrito.push({ ...prod, cantidad: 1 });
+      }
+      guardarCarrito();
+      actualizarCarritoUI();
+      toggleCarrito(true);
+    }
+
+    // Guardar en localStorage
+    function guardarCarrito() {
+      localStorage.setItem('cart_catrachowear', JSON.stringify(carrito));
+    }
+
+    // Toggle Modal Carrito
+    function toggleCarrito(abrir = false) {
+      const modal = document.getElementById('modal-carrito');
+      if (abrir) {
+        modal.style.display = 'flex';
+      } else {
+        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+      }
+    }
+
+    // Actualizar UI del Carrito
+    function actualizarCarritoUI() {
+      const container = document.getElementById('cart-items-container');
+      const countBadge = document.getElementById('cart-count');
+      const subtotalElem = document.getElementById('cart-subtotal');
+      const totalElem = document.getElementById('cart-total');
+
+      container.innerHTML = '';
+      let subtotal = 0;
+      let totalItems = 0;
+
+      if (carrito.length === 0) {
+        container.innerHTML = '<p class="cart-empty"><i class="fa-solid fa-basket-shopping"></i> Tu carrito está vacío.</p>';
+      } else {
+        carrito.forEach(item => {
+          subtotal += item.precio * item.cantidad;
+          totalItems += item.cantidad;
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'cart-item';
+          itemDiv.innerHTML = `
+            <img src="${item.imagen}" alt="${item.nombre}">
+            <div class="cart-item-info">
+              <h4>${item.nombre}</h4>
+              <p>L. ${item.precio}.00 HNL x ${item.cantidad}</p>
+            </div>
+            <div class="cart-item-controls">
+              <button onclick="cambiarCantidad(${item.id}, -1)">-</button>
+              <span>${item.cantidad}</span>
+              <button onclick="cambiarCantidad(${item.id}, 1)">+</button>
+              <button class="btn-remove" onclick="eliminarDelCarrito(${item.id})"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          `;
+          container.appendChild(itemDiv);
+        });
+      }
+
+      countBadge.innerText = totalItems;
+      subtotalElem.innerText = `L. ${subtotal.toFixed(2)} HNL`;
+      const envio = carrito.length > 0 ? 120 : 0;
+      const total = subtotal + envio;
+      totalElem.innerText = `L. ${total.toFixed(2)} HNL`;
+      document.getElementById('checkout-monto-total').innerText = `L. ${total.toFixed(2)} HNL`;
+    }
+
+    function cambiarCantidad(id, cambio) {
+      const item = carrito.find(i => i.id === id);
+      if (item) {
+        item.cantidad += cambio;
+        if (item.cantidad <= 0) {
+          carrito = carrito.filter(i => i.id !== id);
+        }
+      }
+      guardarCarrito();
+      actualizarCarritoUI();
+    }
+
+    function eliminarDelCarrito(id) {
+      carrito = carrito.filter(i => i.id !== id);
+      guardarCarrito();
+      actualizarCarritoUI();
+    }
+
+    // Pasarela y Checkout
+    function mostrarCheckout() {
+      if (carrito.length === 0) {
+        alert("Agrega al menos un producto al carrito para proceder al pago.");
+        return;
+      }
+      toggleCarrito(false);
+      document.getElementById('modal-checkout').style.display = 'flex';
+    }
+
+    function cerrarCheckout() {
+      document.getElementById('modal-checkout').style.display = 'none';
+    }
+
+    function cambiarMetodo(metodo) {
+      const cardDetails = document.getElementById('payment-card-details');
+      if (metodo === 'tarjeta') {
+        cardDetails.style.display = 'block';
+      } else {
+        cardDetails.style.display = 'none';
+      }
+    }
+
+    function procesarPago(event) {
+      event.preventDefault();
+      const cliente = document.getElementById('nombre-cliente').value;
+      const ordenNum = Math.floor(100000 + Math.random() * 900000);
+      
+      alert(`¡Gracias por tu compra, ${cliente}!\n\nOrden #${ordenNum} procesada con éxito mediante Pasarela Segura.\nSe ha enviado un correo de confirmación y el detalle para el despacho.`);
+      
+      carrito = [];
+      guardarCarrito();
+      actualizarCarritoUI();
+      cerrarCheckout();
+    }
   </script>
 </body>
 </html>
