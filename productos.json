@@ -1,66 +1,66 @@
 [
   {
     "id": 1,
-    "nombre": "Camiseta Catracha Algodón Premium",
-    "categoria": "Casual",
-    "precio": 499,
-    "descripcion": "Camiseta 100% algodón hilado de alta suavidad con estampado exclusivo del mapa y bandera de Honduras.",
-    "imagen": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' width='100%' height='100%'><rect width='500' height='500' fill='%23f1f5f9'/><path d='M120,100 Q250,60 380,100 L440,160 L380,200 L380,440 L120,440 L120,200 L60,160 Z' fill='%23003366'/><path d='M120,200 L60,160 L100,110 L150,140 L350,140 L400,110 L440,160 L380,200' fill='%23002244'/><path d='M200,80 Q250,110 300,80' stroke='%23ffffff' stroke-width='4' fill='none'/><rect x='180' y='220' width='140' height='90' fill='%23ffffff' rx='6'/><rect x='180' y='220' width='140' height='30' fill='%230072ce'/><rect x='180' y='280' width='140' height='30' fill='%230072ce'/><g fill='%230072ce'><polygon points='250,257 252,263 258,263 253,267 255,273 250,269 245,273 247,267 242,263 248,263'/><polygon points='220,247 222,253 228,253 223,257 225,263 220,259 215,263 217,257 212,253 218,253'/><polygon points='280,247 282,253 288,253 283,257 285,263 280,259 275,263 277,257 272,253 278,253'/><polygon points='220,267 222,273 228,273 223,277 225,283 220,279 215,283 217,277 212,273 218,273'/><polygon points='280,267 282,273 288,273 283,277 285,283 280,279 275,283 277,277 272,273 278,273'/></g><text x='250' y='340' font-family='Arial, sans-serif' font-weight='bold' font-size='18' fill='%23ffffff' text-anchor='middle'>HONDURAS</text></svg>"
+    "nombre": "Camisa Lenca Bordada A Mano",
+    "categoria": "Hombre",
+    "precio": 620,
+    "descripcion": "Camisa guayabera blanca confeccionada en algodón con finos detalles de bordado tradicional lenca.",
+    "imagen": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 2,
-    "nombre": "Camisa Polo Corporativa Ejecutiva",
-    "categoria": "Uniformes",
-    "precio": 550,
-    "descripcion": "Camisa tipo polo en tono azul ejecutivo con cuello tejido, botones y bordado fino corporativo.",
-    "imagen": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' width='100%' height='100%'><rect width='500' height='500' fill='%23f1f5f9'/><path d='M130,110 Q250,70 370,110 L430,170 L370,200 L370,440 L130,440 L130,200 L70,170 Z' fill='%231e3a8a'/><path d='M180,85 L250,150 L200,160 Z' fill='%230f172a'/><path d='M320,85 L250,150 L300,160 Z' fill='%230f172a'/><path d='M235,140 L265,140 L265,240 L235,240 Z' fill='%231e293b'/><circle cx='250' cy='165' r='4' fill='%23ffffff'/><circle cx='250' cy='190' r='4' fill='%23ffffff'/><circle cx='250' cy='215' r='4' fill='%23ffffff'/><circle cx='310' cy='210' r='10' fill='%23e67e22'/><text x='310' y='214' font-family='Arial' font-size='10' font-weight='bold' fill='%23ffffff' text-anchor='middle'>H</text></svg>"
+    "nombre": "Bufanda de Tela Artesanal Lenca",
+    "categoria": "Accesorios",
+    "precio": 490,
+    "descripcion": "Chal/bufanda tejida en telar de palanca tradicional con combinaciones de tonos cálidos y culturales.",
+    "imagen": "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 3,
-    "nombre": "Uniforme Empresarial Ejecutivo",
-    "categoria": "B2B Corporativo",
-    "precio": 1200,
-    "descripcion": "Conjunto formal de vestir diseñado para personal de oficina e instituciones.",
-    "imagen": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80"
+    "nombre": "Falda Tejida Tradicional (Pasta)",
+    "categoria": "Mujer",
+    "precio": 620,
+    "descripcion": "Falda plisada de talle alto elaborada con patrones geométricos y textiles representativos de Honduras.",
+    "imagen": "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 4,
-    "nombre": "Uniforme Escolar Completo",
-    "categoria": "Escolar",
-    "precio": 850,
-    "descripcion": "Confección resistente para uso diario escolar con telas de primera calidad.",
-    "imagen": "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=600&q=80"
+    "nombre": "Bolso Canvas Eco de Cuero y Tela",
+    "categoria": "Accesorios",
+    "precio": 250,
+    "descripcion": "Tote bag resistente de tela canvas natural combinada con detalles de piel y tejido artesanal.",
+    "imagen": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 5,
-    "nombre": "Conjunto Deportivo Sublimado",
-    "categoria": "Deporte",
+    "nombre": "Vestido Artesanal de Algodón",
+    "categoria": "Mujer",
     "precio": 750,
-    "descripcion": "Indumentaria deportiva transpirable para equipos, academias y ligas.",
-    "imagen": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80"
+    "descripcion": "Vestido fresco con bordados autóctonos hechos por artesanas locales en Intibucá.",
+    "imagen": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 6,
-    "nombre": "Sudadera Hoodie Catracho",
-    "categoria": "Abrigos",
-    "precio": 650,
-    "descripcion": "Sudadera con capucha y felpa interior para la temporada de frío.",
-    "imagen": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80"
+    "nombre": "Guayabera Ejecutiva Lenca Azul",
+    "categoria": "Hombre",
+    "precio": 680,
+    "descripcion": "Prenda formal y fresca de lino/algodón en tono azul profundo con alforzas y tejido típico.",
+    "imagen": "https://images.unsplash.com/photo-1625910513413-4ec35f58c7e9?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 7,
-    "nombre": "Gorra Bordada Béisbol",
+    "nombre": "Bolso Cuero y Tejido de Mano",
     "categoria": "Accesorios",
-    "precio": 350,
-    "descripcion": "Gorra estructurada ajustable con bordado 3D del logo de Honduras.",
-    "imagen": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80"
+    "precio": 550,
+    "descripcion": "Cartera de mano confeccionada en cuero genuino y frente de tapiz Lenca elaborado en telar.",
+    "imagen": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 8,
-    "nombre": "Bolso Ecológico Canvas Premium",
-    "categoria": "Accesorios",
-    "precio": 150,
-    "descripcion": "Bolso tote bag reutilizable de tela natural de alta resistencia para uso diario o regalos.",
-    "imagen": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80"
+    "nombre": "Sudadera Artesanal Catracha",
+    "categoria": "Abrigos",
+    "precio": 650,
+    "descripcion": "Sudadera de felpa cálida con apliques bordados del mapa y símbolos de Honduras.",
+    "imagen": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
   }
 ]
