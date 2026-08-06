@@ -1,19 +1,19 @@
 [
   {
     "id": 1,
-    "nombre": "Camiseta Catracha Algodón",
+    "nombre": "Camiseta Catracha Algodón Premium",
     "categoria": "Casual",
     "precio": 499,
-    "descripcion": "Camiseta 100% algodón suave con estampado cultural de alta durabilidad.",
-    "imagen": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+    "descripcion": "Camiseta 100% algodón hilado de alta suavidad con diseño exclusivo de orgullo catracho.",
+    "imagen": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 2,
-    "nombre": "Camisa Polo Corporativa",
+    "nombre": "Camisa Polo Corporativa Ejecutiva",
     "categoria": "Uniformes",
     "precio": 550,
-    "descripcion": "Polo empresarial disponible en varios colores con bordado computarizado.",
-    "imagen": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80"
+    "descripcion": "Camisa tipo polo de confección nacional con bordado fino computarizado.",
+    "imagen": "https://images.unsplash.com/photo-1625910513413-4ec35f58c7e9?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 3,
@@ -57,10 +57,10 @@
   },
   {
     "id": 8,
-    "nombre": "Bolso Ecológico de Tela",
+    "nombre": "Bolso Ecológico de Tela Canvas Premium",
     "categoria": "Accesorios",
     "precio": 150,
-    "descripcion": "Bolsa reutilizable de tela resistente ideal para regalos e identidad de marca.",
-    "imagen": "https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&fit=crop&w=600&q=80"
+    "descripcion": "Bolso tote bag reutilizable de tela natural de alta resistencia para uso diario o regalos.",
+    "imagen": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80"
   }
 ]
