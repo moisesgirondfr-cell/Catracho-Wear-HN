@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catracho Wear HN | Tienda Oficial</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Encabezado / Navegación -->
+  <header>
+    <div class="logo">Catracho Wear HN</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section id="inicio" class="hero">
+    <h1>Moda con Identidad Hondureña</h1>
+    <p>Prendas de vestir casuales e institucionales diseñadas en San Pedro Sula.</p>
+    <a href="#catalogo" class="btn">Ver Catálogo</a>
+  </section>
+
+  <!-- Seccion de Catalogo -->
+  <main id="catalogo">
+    <h2>Nuestros Productos</h2>
+    <div id="productos-grid" class="grid-productos">
+      <!-- Los productos se cargarán dinámicamente con JS -->
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer id="contacto">
+    <p>&copy; 2026 Catracho Wear HN - Todos los derechos reservados.</p>
+    <p>Contacto vía WhatsApp: +504 9999-9999 | Envíos a todo Honduras</p>
+  </footer>
+
+  <!-- Script para cargar el JSON estático -->
+  <script>
+    fetch('productos.json')
+      .then(response => response.json())
+      .then(productos => {
+        const grid = document.getElementById('productos-grid');
+        productos.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h3>${p.nombre}</h3>
+            <p><strong>Categoría:</strong> ${p.categoria}</p>
+            <p class="precio">L. ${p.precio}.00 HNL</p>
+            <button class="btn-comprar" onclick="alert('Producto añadido al carrito (Modo Prueba)')">Añadir al Carrito</button>
+          `;
+          grid.appendChild(card);
+        });
+      })
+      .catch(error => console.error('Error al cargar productos:', error));
+  </script>
+</body>
+</html>
