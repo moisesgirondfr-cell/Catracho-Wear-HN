@@ -6,286 +6,7 @@
   <title>CATRACHOWEAR | Moda con Identidad Hondureña</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    :root {
-      --primary: #0f2b48;
-      --primary-hover: #163e68;
-      --accent: #00a8e8;
-      --bg-body: #f1f5f9;
-      --surface: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --radius: 12px;
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.5; padding: 20px 15px; }
-
-    .main-container {
-      max-width: 1140px;
-      margin: 0 auto;
-      background-color: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-md);
-      padding: 24px;
-    }
-
-    /* Header & Navigation */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 24px;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-family: 'Pacifico', cursive;
-      font-size: 2rem;
-      color: var(--primary);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-
-    .nav-right { display: flex; align-items: center; gap: 18px; }
-    .account-link {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .account-link:hover { color: var(--primary); }
-
-    .cart-btn {
-      position: relative;
-      background: #f8fafc;
-      border: 1px solid var(--border-color);
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-    }
-    .cart-btn:hover { background: #e2e8f0; transform: translateY(-1px); }
-    .cart-btn .badge {
-      background: var(--primary);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 10px;
-    }
-
-    /* Hero Banner */
-    .hero-card {
-      position: relative;
-      min-height: 280px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: linear-gradient(90deg, rgba(15, 43, 72, 0.92) 0%, rgba(15, 43, 72, 0.3) 70%), 
-                  url('https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      padding: 35px;
-      margin-bottom: 32px;
-      color: white;
-    }
-    .hero-text { max-width: 480px; }
-    .hero-text h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.25; margin-bottom: 10px; letter-spacing: -0.5px; }
-    .hero-text p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 20px; }
-    .btn-hero {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: var(--accent);
-      color: white;
-      padding: 10px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-hero:hover { background-color: #0093cc; transform: translateY(-2px); }
-
-    /* Section Titles */
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin: 32px 0 16px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Categories Grid */
-    .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .category-card {
-      position: relative;
-      height: 160px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .category-card:hover img { transform: scale(1.06); }
-    .category-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15, 27, 42, 0.75), transparent);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 12px;
-    }
-    .category-title { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
-
-    /* Product Grid */
-    .products-grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
-    .product-mini-card {
-      background: #ffffff;
-      border-radius: var(--radius);
-      padding: 12px;
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .product-mini-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-    .product-mini-card .img-box { height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
-    .product-mini-card img { width: 100%; height: 100%; object-fit: cover; }
-    .product-mini-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
-    .product-mini-card .price { font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
-    .btn-add-mini {
-      background: var(--primary);
-      border: none;
-      color: white;
-      font-size: 0.825rem;
-      font-weight: 600;
-      padding: 9px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: background 0.2s;
-    }
-    .btn-add-mini:hover { background: var(--primary-hover); }
-
-    /* Info Section */
-    .info-section {
-      margin-top: 36px;
-      background: #f8fafc;
-      padding: 24px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-    }
-    .section-heading { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-    .nosotros-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-    .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
-    .valor-box { background: white; padding: 16px; border-radius: 10px; text-align: center; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
-    .valor-box i { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
-    .valor-box h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-    .valor-box p { font-size: 0.8rem; color: var(--text-muted); }
-
-    /* Contact Cards */
-    .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 14px; }
-    .contact-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: white;
-      padding: 14px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .contact-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
-
-    /* Footer */
-    .footer-bar {
-      background-color: var(--primary);
-      color: #94a3b8;
-      text-align: center;
-      padding: 16px;
-      margin-top: 36px;
-      border-radius: 0 0 var(--radius) var(--radius);
-      font-size: 0.85rem;
-    }
-
-    /* Modals */
-    .cart-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 3000;
-      justify-content: center;
-      align-items: center;
-    }
-    .cart-modal-content {
-      background: white;
-      width: 90%;
-      max-width: 440px;
-      padding: 24px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-    }
-    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .close-btn { font-size: 1.25rem; color: var(--text-muted); cursor: pointer; }
-    .close-btn:hover { color: var(--text-main); }
-    .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--border-color); font-size: 0.9rem; }
-    .btn-checkout {
-      width: 100%;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 14px;
-      transition: background 0.2s;
-    }
-    .btn-checkout:hover { background: var(--primary-hover); }
-
-    @media (max-width: 640px) {
-      .categories-grid { grid-template-columns: 1fr; }
-      .hero-card { padding: 24px 18px; }
-      .hero-text h1 { font-size: 1.4rem; }
-      .navbar { flex-direction: column; align-items: flex-start; }
-      .nav-right { width: 100%; justify-content: space-between; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -301,79 +22,105 @@
       </nav>
       <div class="nav-right">
         <a href="#cuenta" class="account-link" onclick="mostrarCheckout()"><i class="fa-regular fa-user"></i> Cuenta</a>
-        <button class="cart-btn" onclick="toggleCarrito()">
+        <div class="cart-icon" onclick="toggleCarrito()">
           <i class="fa-solid fa-bag-shopping"></i>
           <span id="cart-count" class="badge">0</span>
-        </button>
+        </div>
       </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section id="inicio" class="hero-card">
-      <div class="hero-text">
-        <h1>Moda con Identidad Hondureña</h1>
-        <p>Prendas con historia que conectan nuestra cultura, orgullo y tradición confeccionadas en San Pedro Sula.</p>
-        <a href="#tienda" class="btn-hero"><i class="fa-solid fa-shirt"></i> Ver Colección</a>
-      </div>
-    </section>
-
-    <!-- Store Section -->
-    <section id="tienda">
-      <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Categorías Principales</h3>
-      <div class="categories-grid">
-        <div class="category-card">
-          <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80" alt="Hombre">
-          <div class="category-overlay"><span class="category-title">Hombre</span></div>
+    <main>
+      <!-- Hero Banner -->
+      <section id="inicio" class="hero-card">
+        <div class="hero-text">
+          <h1>Moda con Identidad Hondureña</h1>
+          <p>Prendas con historia que conectan nuestra cultura, orgullo y tradición confeccionadas en San Pedro Sula.</p>
+          <a href="#tienda" class="btn-hero"><i class="fa-solid fa-shirt"></i> Ver Colección</a>
         </div>
-        <div class="category-card">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Mujer">
-          <div class="category-overlay"><span class="category-title">Mujer</span></div>
+      </section>
+
+      <!-- Tienda & Categorías -->
+      <section id="tienda">
+        <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Categorías Principales</h3>
+        <div class="categories-grid">
+          <div class="category-card" onclick="filtrarProductos('Hombre')">
+            <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80" alt="Hombre">
+            <span class="category-title">Hombre</span>
+          </div>
+          <div class="category-card" onclick="filtrarProductos('Mujer')">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Mujer">
+            <span class="category-title">Mujer</span>
+          </div>
+          <div class="category-card" onclick="filtrarProductos('Accesorios')">
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Accesorios">
+            <span class="category-title">Accesorios</span>
+          </div>
         </div>
-        <div class="category-card">
-          <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Accesorios">
-          <div class="category-overlay"><span class="category-title">Accesorios</span></div>
+
+        <!-- Filtros interactivos -->
+        <div class="category-filters">
+          <button class="filter-btn active" onclick="filtrarProductos('Todos', this)">Todos</button>
+          <button class="filter-btn" onclick="filtrarProductos('Hombre', this)">Hombre</button>
+          <button class="filter-btn" onclick="filtrarProductos('Mujer', this)">Mujer</button>
+          <button class="filter-btn" onclick="filtrarProductos('Accesorios', this)">Accesorios</button>
+          <button class="filter-btn" onclick="filtrarProductos('Abrigos', this)">Abrigos</button>
         </div>
-      </div>
 
-      <h3 class="section-title"><i class="fa-solid fa-fire"></i> Catálogo Destacado</h3>
-      <div class="products-grid-mini" id="productos-grid"></div>
-    </section>
+        <h3 class="section-title"><i class="fa-solid fa-fire"></i> Catálogo Artesanal</h3>
+        <div class="products-grid-mini" id="productos-grid"></div>
+      </section>
 
-    <!-- About Section -->
-    <section id="nosotros" class="info-section">
-      <h2 class="section-heading"><i class="fa-solid fa-building"></i> Sobre Catracho Wear HN</h2>
-      <div class="nosotros-content">
-        <p>Fundada en 2021 en San Pedro Sula, Cortés, nos especializamos en confeccionar prendas artesanales, ropa casual y accesorios con identidad visual autóctona para los amantes de nuestra tierra.</p>
-        <div class="valores-grid">
-          <div class="valor-box"><i class="fa-solid fa-heart"></i><h4>Identidad</h4><p>Orgullo catracho en cada diseño.</p></div>
-          <div class="valor-box"><i class="fa-solid fa-award"></i><h4>Calidad</h4><p>Algodón de alta resistencia.</p></div>
-          <div class="valor-box"><i class="fa-solid fa-truck-fast"></i><h4>Envíos</h4><p>Cobertura nacional e internacional.</p></div>
+      <!-- Nosotros -->
+      <section id="nosotros" class="info-section">
+        <h2 class="section-heading"><i class="fa-solid fa-building"></i> Sobre Catracho Wear HN</h2>
+        <div class="nosotros-content">
+          <p><strong>Catracho Wear HN</strong> es una empresa hondureña fundada en 2021 en San Pedro Sula, Cortés. Nos especializamos en la confección de prendas artesanales, uniformes y moda autóctona que resalta nuestra cultura.</p>
+          <div class="valores-grid">
+            <div class="valor-box"><i class="fa-solid fa-heart"></i><h4>Identidad</h4><p>Orgullo catracho en cada diseño.</p></div>
+            <div class="valor-box"><i class="fa-solid fa-award"></i><h4>Calidad</h4><p>Algodón e hilos de primera.</p></div>
+            <div class="valor-box"><i class="fa-solid fa-truck-fast"></i><h4>Envíos</h4><p>Cobertura a todo Honduras.</p></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Help Section -->
-    <section id="ayuda" class="info-section">
-      <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda</h2>
-      <div class="contact-cards">
-        <a href="https://wa.me/50493554091" target="_blank" class="contact-card">
-          <i class="fa-brands fa-whatsapp" style="font-size: 1.8rem; color:#25d366;"></i>
-          <div><h4>WhatsApp Directo</h4><p style="font-size: 0.85rem; color:#64748b;">+504 9355-4091</p></div>
-        </a>
-        <a href="mailto:contacto@catrachowearhn.com" class="contact-card">
-          <i class="fa-regular fa-envelope" style="font-size: 1.8rem; color:#0f2b48;"></i>
-          <div><h4>Correo Electrónico</h4><p style="font-size: 0.85rem; color:#64748b;">contacto@catrachowearhn.com</p></div>
-        </a>
-      </div>
-    </section>
+      <!-- Ayuda -->
+      <section id="ayuda" class="info-section">
+        <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda</h2>
+        <div class="contact-cards">
+          <a href="https://wa.me/50493554091" target="_blank" class="contact-card whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div>
+              <h4>WhatsApp Directo</h4>
+              <p>+504 9355-4091</p>
+              <small>Atención de Lunes a Sábado</small>
+            </div>
+          </a>
+          <a href="mailto:contacto@catrachowearhn.com" class="contact-card email">
+            <i class="fa-regular fa-envelope"></i>
+            <div>
+              <h4>Correo Electrónico</h4>
+              <p>contacto@catrachowearhn.com</p>
+              <small>Respuesta en menos de 24h</small>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer-bar">
       © 2026 Catracho Wear HN • Todos los derechos reservados
     </footer>
   </div>
 
-  <!-- Cart Modal -->
+  <!-- Modal Detalle de Producto -->
+  <div id="modal-producto" class="cart-modal">
+    <div class="cart-modal-content product-detail-box">
+      <span class="close-btn" onclick="cerrarDetalleProducto()">&times;</span>
+      <div id="detalle-producto-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal Carrito -->
   <div id="modal-carrito" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
@@ -388,45 +135,108 @@
     </div>
   </div>
 
-  <!-- Checkout Modal -->
+  <!-- Modal Checkout -->
   <div id="modal-checkout" class="cart-modal">
-    <div class="cart-modal-content">
+    <div class="cart-modal-content checkout-box">
       <div class="cart-header">
-        <h3><i class="fa-solid fa-lock"></i> Pago Seguro</h3>
+        <h3><i class="fa-solid fa-lock"></i> Pasarela de Pago Seguro</h3>
         <span class="close-btn" onclick="cerrarCheckout()"><i class="fa-solid fa-xmark"></i></span>
       </div>
-      <form onsubmit="procesarPago(event)">
-        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
-        <input type="tel" placeholder="WhatsApp / Teléfono" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
-        <p style="margin: 10px 0; font-size: 0.85rem; color:#64748b;">Método: <strong>Tarjeta / Transferencia Bancaria</strong></p>
-        <button type="submit" class="btn-checkout">Confirmar Pedido</button>
+      <form class="checkout-form" onsubmit="procesarPago(event)">
+        <h4>Datos del cliente</h4>
+        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required>
+        <input type="tel" id="tel-cliente" placeholder="Número de WhatsApp" required>
+        
+        <h4>Detalles de entrega</h4>
+        <input type="text" id="direccion-cliente" placeholder="Dirección de Envío (Ciudad, Colonia)" required>
+        
+        <div class="total-checkout-display">
+          <span>Total a Pagar:</span>
+          <span id="checkout-total-val">L. 0.00</span>
+        </div>
+        
+        <button type="submit" class="btn-confirm-pay"><i class="fa-brands fa-whatsapp"></i> Enviar Pedido por WhatsApp</button>
       </form>
     </div>
   </div>
 
   <script>
     let productos = [];
+    let productosFiltrados = [];
     let carrito = JSON.parse(localStorage.getItem('cart_cw')) || [];
 
-    fetch('productos.json?v=2.0')
+    // Carga de productos
+    fetch('products.json?v=2.0')
       .then(res => res.json())
-      .then(data => { productos = data; renderProductos(); actualizarUI(); })
-      .catch(() => actualizarUI());
+      .then(data => { 
+        productos = data; 
+        productosFiltrados = data;
+        renderProductos(); 
+        actualizarUI(); 
+      })
+      .catch(err => console.error("Error al cargar productos.json", err));
 
     function renderProductos() {
       const grid = document.getElementById('productos-grid');
       if(!grid) return;
       grid.innerHTML = '';
-      productos.forEach(p => {
+
+      if(productosFiltrados.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#64748b;">No hay productos en esta categoría.</p>';
+        return;
+      }
+
+      productosFiltrados.forEach(p => {
         grid.innerHTML += `
           <div class="product-mini-card">
-            <div class="img-box"><img src="${p.imagen}" alt="${p.nombre}"></div>
-            <h4>${p.nombre}</h4>
-            <p class="price">L. ${p.precio}.00 HNL</p>
+            <div class="img-box" onclick="verDetalleProducto(${p.id})">
+              <img src="${p.imagen}" alt="${p.nombre}">
+            </div>
+            <div onclick="verDetalleProducto(${p.id})" style="cursor:pointer;">
+              <span class="badge-cat">${p.categoria}</span>
+              <h4>${p.nombre}</h4>
+              <p class="price">L. ${p.precio}.00 HNL</p>
+            </div>
             <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
           </div>
         `;
       });
+    }
+
+    function filtrarProductos(cat, btn) {
+      if(btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      if(cat === 'Todos') {
+        productosFiltrados = productos;
+      } else {
+        productosFiltrados = productos.filter(p => p.categoria.toLowerCase() === cat.toLowerCase());
+      }
+      renderProductos();
+    }
+
+    function verDetalleProducto(id) {
+      const p = productos.find(item => item.id === id);
+      if(!p) return;
+      const body = document.getElementById('detalle-producto-body');
+      body.innerHTML = `
+        <div class="modal-prod-flex">
+          <img src="${p.imagen}" alt="${p.nombre}" class="modal-prod-img">
+          <div>
+            <span class="badge-cat">${p.categoria}</span>
+            <h3 style="color:var(--primary); margin: 6px 0;">${p.nombre}</h3>
+            <p style="font-size:0.9rem; color:#475569; margin-bottom:12px; line-height:1.5;">${p.descripcion}</p>
+            <p style="font-size:1.3rem; font-weight:800; color:var(--primary); margin-bottom:15px;">L. ${p.precio}.00 HNL</p>
+            <button class="btn-confirm-pay" onclick="agregarAlCarrito(${p.id}); cerrarDetalleProducto();"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito</button>
+          </div>
+        </div>
+      `;
+      document.getElementById('modal-producto').style.display = 'flex';
+    }
+
+    function cerrarDetalleProducto() {
+      document.getElementById('modal-producto').style.display = 'none';
     }
 
     function agregarAlCarrito(id) {
@@ -437,6 +247,17 @@
       localStorage.setItem('cart_cw', JSON.stringify(carrito));
       actualizarUI();
       toggleCarrito(true);
+    }
+
+    function cambiarCantidad(id, cambio) {
+      const item = carrito.find(i => i.id === id);
+      if(!item) return;
+      item.cantidad += cambio;
+      if(item.cantidad <= 0) {
+        carrito = carrito.filter(i => i.id !== id);
+      }
+      localStorage.setItem('cart_cw', JSON.stringify(carrito));
+      actualizarUI();
     }
 
     function toggleCarrito(abrir = false) {
@@ -456,6 +277,7 @@
       const count = document.getElementById('cart-count');
       const container = document.getElementById('cart-items-container');
       const totalElem = document.getElementById('cart-total');
+      const checkoutTotal = document.getElementById('checkout-total-val');
       let totalItems = 0, totalMonto = 0;
       container.innerHTML = '';
 
@@ -466,21 +288,51 @@
           totalItems += item.cantidad;
           totalMonto += item.precio * item.cantidad;
           container.innerHTML += `
-            <div class="cart-item">
-              <span>${item.nombre} (x${item.cantidad})</span>
-              <strong>L. ${item.precio * item.cantidad}</strong>
+            <div class="cart-item-row">
+              <div>
+                <strong>${item.nombre}</strong>
+                <p style="font-size:0.8rem; color:#64748b;">L. ${item.precio} x ${item.cantidad}</p>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="btn-qty" onclick="cambiarCantidad(${item.id}, -1)">-</button>
+                <span>${item.cantidad}</span>
+                <button class="btn-qty" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+                <strong style="margin-left:8px;">L. ${item.precio * item.cantidad}</strong>
+              </div>
             </div>
           `;
         });
       }
 
       count.innerText = totalItems;
-      totalElem.innerText = `L. ${totalMonto.toFixed(2)} HNL`;
+      const formattedTotal = `L. ${totalMonto.toFixed(2)} HNL`;
+      totalElem.innerText = formattedTotal;
+      if(checkoutTotal) checkoutTotal.innerText = formattedTotal;
     }
 
     function procesarPago(e) {
       e.preventDefault();
-      alert("¡Gracias por tu compra! Tu pedido fue procesado con éxito.");
+      const nombre = document.getElementById('nombre-cliente').value;
+      const tel = document.getElementById('tel-cliente').value;
+      const direccion = document.getElementById('direccion-cliente').value;
+
+      let resumen = `*NUEVO PEDIDO - CATRACHO WEAR HN*\n`;
+      resumen += `👤 *Cliente:* ${nombre}\n`;
+      resumen += `📱 *Teléfono:* ${tel}\n`;
+      resumen += `📍 *Dirección:* ${direccion}\n\n`;
+      resumen += `*Detalle de Productos:*\n`;
+
+      let total = 0;
+      carrito.forEach(item => {
+        resumen += `- ${item.nombre} (x${item.cantidad}) = L. ${item.precio * item.cantidad}\n`;
+        total += item.precio * item.cantidad;
+      });
+
+      resumen += `\n💰 *TOTAL A PAGAR:* L. ${total}.00 HNL`;
+
+      const urlWhatsApp = `https://wa.me/50493554091?text=${encodeURIComponent(resumen)}`;
+      window.open(urlWhatsApp, '_blank');
+
       carrito = [];
       localStorage.setItem('cart_cw', JSON.stringify(carrito));
       actualizarUI();
