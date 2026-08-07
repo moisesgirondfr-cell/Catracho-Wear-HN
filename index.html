@@ -4,173 +4,401 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CATRACHOWEAR | Moda con Identidad Hondureña</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-    body { background-color: #dbe4ee; padding: 15px 3%; color: #1a2b49; }
-    .main-container { max-width: 1100px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 15px; }
-    
-    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px 15px 5px; flex-wrap: wrap; gap: 10px; }
-    .logo { font-family: 'Pacifico', cursive; font-size: 1.8rem; color: #1c355e; }
-    .nav-links a { text-decoration: none; color: #334155; margin: 0 10px; font-weight: 500; font-size: 0.9rem; }
-    .nav-links a.active { color: #1c355e; font-weight: 700; }
-    .nav-right { display: flex; align-items: center; gap: 15px; }
-    .account-link { text-decoration: none; color: #334155; font-size: 0.85rem; }
-    .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: #1c355e; }
-    .cart-icon .badge { position: absolute; top: -8px; right: -10px; background: #1c355e; color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
+    :root {
+      --primary: #0f2b48;
+      --primary-hover: #163e68;
+      --accent: #00a8e8;
+      --bg-body: #f1f5f9;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius: 12px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
+    }
 
-    .hero-card { position: relative; height: 260px; border-radius: 12px; overflow: hidden; background: linear-gradient(90deg, rgba(240,237,232,0.95) 0%, rgba(240,237,232,0.4) 60%), url('https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; display: flex; align-items: center; padding: 0 25px; }
-    .hero-text { max-width: 400px; z-index: 2; }
-    .hero-text h1 { font-size: 1.4rem; font-weight: 800; color: #1c355e; line-height: 1.2; margin-bottom: 8px; }
-    .hero-text p { font-size: 0.85rem; color: #475569; margin-bottom: 15px; }
-    .btn-hero { display: inline-block; background-color: #2b4c7e; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.5; padding: 20px 15px; }
 
-    .section-title { font-size: 1.1rem; color: #1c355e; margin: 20px 0 10px 0; }
-    .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-    .category-card { position: relative; height: 150px; border-radius: 10px; overflow: hidden; }
-    .category-card img { width: 100%; height: 100%; object-fit: cover; }
-    .category-title { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: 'Pacifico', cursive; font-size: 1.4rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.7); }
+    .main-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      background-color: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 24px;
+    }
 
-    .products-grid-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-    .product-mini-card { background: #f8fafc; border-radius: 8px; padding: 10px; text-align: center; border: 1px solid #e2e8f0; }
-    .product-mini-card .img-box { height: 110px; margin-bottom: 8px; border-radius: 6px; overflow: hidden; }
+    /* Header & Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+
+    .nav-right { display: flex; align-items: center; gap: 18px; }
+    .account-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .account-link:hover { color: var(--primary); }
+
+    .cart-btn {
+      position: relative;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .cart-btn:hover { background: #e2e8f0; transform: translateY(-1px); }
+    .cart-btn .badge {
+      background: var(--primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      position: relative;
+      min-height: 280px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(90deg, rgba(15, 43, 72, 0.92) 0%, rgba(15, 43, 72, 0.3) 70%), 
+                  url('https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 35px;
+      margin-bottom: 32px;
+      color: white;
+    }
+    .hero-text { max-width: 480px; }
+    .hero-text h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.25; margin-bottom: 10px; letter-spacing: -0.5px; }
+    .hero-text p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 20px; }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-hero:hover { background-color: #0093cc; transform: translateY(-2px); }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 32px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Categories Grid */
+    .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .category-card {
+      position: relative;
+      height: 160px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .category-card:hover img { transform: scale(1.06); }
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 27, 42, 0.75), transparent);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 12px;
+    }
+    .category-title { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+
+    /* Product Grid */
+    .products-grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    .product-mini-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product-mini-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .product-mini-card .img-box { height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
     .product-mini-card img { width: 100%; height: 100%; object-fit: cover; }
-    .product-mini-card h4 { font-size: 0.8rem; color: #334155; margin-bottom: 4px; }
-    .product-mini-card .price { font-size: 0.85rem; font-weight: 700; color: #1c355e; margin-bottom: 8px; }
-    .btn-add-mini { background: #cbd5e1; border: none; color: #1e293b; font-size: 0.75rem; padding: 6px 10px; border-radius: 4px; cursor: pointer; width: 100%; }
+    .product-mini-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+    .product-mini-card .price { font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+    .btn-add-mini {
+      background: var(--primary);
+      border: none;
+      color: white;
+      font-size: 0.825rem;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-add-mini:hover { background: var(--primary-hover); }
 
-    .info-section { margin-top: 25px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; }
-    .section-heading { font-size: 1.1rem; color: #1c355e; margin-bottom: 10px; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; }
-    .nosotros-content p { color: #475569; font-size: 0.85rem; line-height: 1.5; margin-bottom: 10px; }
-    .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 15px; }
-    .valor-box { background: white; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-    .valor-box i { font-size: 1.4rem; color: #1c355e; margin-bottom: 5px; }
+    /* Info Section */
+    .info-section {
+      margin-top: 36px;
+      background: #f8fafc;
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+    }
+    .section-heading { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .nosotros-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
+    .valor-box { background: white; padding: 16px; border-radius: 10px; text-align: center; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+    .valor-box i { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
+    .valor-box h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .valor-box p { font-size: 0.8rem; color: var(--text-muted); }
 
-    .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 10px; }
-    .contact-card { display: flex; align-items: center; gap: 12px; background: white; padding: 12px; border-radius: 8px; text-decoration: none; color: #1e293b; border: 1px solid #e2e8f0; }
+    /* Contact Cards */
+    .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 14px; }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
 
-    .footer-bar { background-color: #1c355e; color: #ffffff; text-align: center; padding: 12px; margin-top: 20px; border-radius: 0 0 10px 10px; font-size: 0.8rem; }
-    .footer-bar a { color: white; text-decoration: none; margin: 0 5px; }
+    /* Footer */
+    .footer-bar {
+      background-color: var(--primary);
+      color: #94a3b8;
+      text-align: center;
+      padding: 16px;
+      margin-top: 36px;
+      border-radius: 0 0 var(--radius) var(--radius);
+      font-size: 0.85rem;
+    }
 
-    .cart-modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 3000; justify-content: center; align-items: center; }
-    .cart-modal-content { background: white; width: 90%; max-width: 420px; padding: 20px; border-radius: 10px; }
-    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-    .close-btn { font-size: 1.5rem; cursor: pointer; }
-    .btn-checkout { width: 100%; background: #1c355e; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    /* Modals */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+    }
+    .cart-modal-content {
+      background: white;
+      width: 90%;
+      max-width: 440px;
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .close-btn { font-size: 1.25rem; color: var(--text-muted); cursor: pointer; }
+    .close-btn:hover { color: var(--text-main); }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--border-color); font-size: 0.9rem; }
+    .btn-checkout {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: background 0.2s;
+    }
+    .btn-checkout:hover { background: var(--primary-hover); }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .categories-grid { grid-template-columns: 1fr; }
-      .hero-card { height: auto; padding: 25px 15px; }
-      .hero-text h1 { font-size: 1.2rem; }
+      .hero-card { padding: 24px 18px; }
+      .hero-text h1 { font-size: 1.4rem; }
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-right { width: 100%; justify-content: space-between; }
     }
   </style>
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="logo">CATRACHOWEAR</div>
-    <nav class="nav-links">
-      <a href="#inicio" class="active">Inicio</a>
-      <a href="#tienda">Tienda</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#ayuda">Ayuda</a>
-    </nav>
-    <div class="nav-right">
-      <a href="#cuenta" class="account-link" onclick="mostrarCheckout()"><i class="fa-regular fa-user"></i> Cuenta</a>
-      <div class="cart-icon" onclick="toggleCarrito()">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="cart-count" class="badge">0</span>
+  <div class="main-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <a href="#" class="logo">CATRACHOWEAR</a>
+      <nav class="nav-links">
+        <a href="#inicio" class="active">Inicio</a>
+        <a href="#tienda">Tienda</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#ayuda">Ayuda</a>
+      </nav>
+      <div class="nav-right">
+        <a href="#cuenta" class="account-link" onclick="mostrarCheckout()"><i class="fa-regular fa-user"></i> Cuenta</a>
+        <button class="cart-btn" onclick="toggleCarrito()">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span id="cart-count" class="badge">0</span>
+        </button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="main-container">
+    <!-- Hero Banner -->
     <section id="inicio" class="hero-card">
       <div class="hero-text">
-        <h1>MODA CON IDENTIDAD HONDUREÑA</h1>
-        <p>Prendas que conectan cultura, orgullo y estilo confeccionadas en San Pedro Sula.</p>
-        <a href="#tienda" class="btn-hero">VER COLECCIÓN</a>
+        <h1>Moda con Identidad Hondureña</h1>
+        <p>Prendas con historia que conectan nuestra cultura, orgullo y tradición confeccionadas en San Pedro Sula.</p>
+        <a href="#tienda" class="btn-hero"><i class="fa-solid fa-shirt"></i> Ver Colección</a>
       </div>
     </section>
 
+    <!-- Store Section -->
     <section id="tienda">
       <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Categorías Principales</h3>
       <div class="categories-grid">
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80" alt="Hombre">
-          <span class="category-title">Hombre</span>
+          <div class="category-overlay"><span class="category-title">Hombre</span></div>
         </div>
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Mujer">
-          <span class="category-title">Mujer</span>
+          <div class="category-overlay"><span class="category-title">Mujer</span></div>
         </div>
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Accesorios">
-          <span class="category-title">Accesorios</span>
+          <div class="category-overlay"><span class="category-title">Accesorios</span></div>
         </div>
       </div>
 
-      <h3 class="section-title"><i class="fa-solid fa-shirt"></i> Catálogo Artesanal</h3>
+      <h3 class="section-title"><i class="fa-solid fa-fire"></i> Catálogo Destacado</h3>
       <div class="products-grid-mini" id="productos-grid"></div>
     </section>
 
+    <!-- About Section -->
     <section id="nosotros" class="info-section">
       <h2 class="section-heading"><i class="fa-solid fa-building"></i> Sobre Catracho Wear HN</h2>
       <div class="nosotros-content">
-        <p><strong>Catracho Wear HN</strong> es una empresa hondureña fundada en 2021 en San Pedro Sula, Cortés. Nos especializamos en la confección de prendas artesanales, uniformes y moda autóctona que resalta nuestra cultura.</p>
+        <p>Fundada en 2021 en San Pedro Sula, Cortés, nos especializamos en confeccionar prendas artesanales, ropa casual y accesorios con identidad visual autóctona para los amantes de nuestra tierra.</p>
         <div class="valores-grid">
           <div class="valor-box"><i class="fa-solid fa-heart"></i><h4>Identidad</h4><p>Orgullo catracho en cada diseño.</p></div>
-          <div class="valor-box"><i class="fa-solid fa-award"></i><h4>Calidad</h4><p>Algodón e hilos de primera.</p></div>
-          <div class="valor-box"><i class="fa-solid fa-truck-fast"></i><h4>Envíos</h4><p>Cobertura a todo Honduras.</p></div>
+          <div class="valor-box"><i class="fa-solid fa-award"></i><h4>Calidad</h4><p>Algodón de alta resistencia.</p></div>
+          <div class="valor-box"><i class="fa-solid fa-truck-fast"></i><h4>Envíos</h4><p>Cobertura nacional e internacional.</p></div>
         </div>
       </div>
     </section>
 
+    <!-- Help Section -->
     <section id="ayuda" class="info-section">
       <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda</h2>
       <div class="contact-cards">
         <a href="https://wa.me/50493554091" target="_blank" class="contact-card">
           <i class="fa-brands fa-whatsapp" style="font-size: 1.8rem; color:#25d366;"></i>
-          <div><h4>WhatsApp Directo</h4><p>+504 9355-4091</p></div>
+          <div><h4>WhatsApp Directo</h4><p style="font-size: 0.85rem; color:#64748b;">+504 9355-4091</p></div>
         </a>
         <a href="mailto:contacto@catrachowearhn.com" class="contact-card">
-          <i class="fa-regular fa-envelope" style="font-size: 1.8rem; color:#1c355e;"></i>
-          <div><h4>Correo Electrónico</h4><p>contacto@catrachowearhn.com</p></div>
+          <i class="fa-regular fa-envelope" style="font-size: 1.8rem; color:#0f2b48;"></i>
+          <div><h4>Correo Electrónico</h4><p style="font-size: 0.85rem; color:#64748b;">contacto@catrachowearhn.com</p></div>
         </a>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer-bar">
-      Envíos • Atención • Redes • Privacidad • Términos
+      © 2026 Catracho Wear HN • Todos los derechos reservados
     </footer>
-  </main>
+  </div>
 
+  <!-- Cart Modal -->
   <div id="modal-carrito" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
-        <h3>Tu Carrito</h3>
-        <span class="close-btn" onclick="toggleCarrito()">&times;</span>
+        <h3><i class="fa-solid fa-bag-shopping"></i> Tu Carrito</h3>
+        <span class="close-btn" onclick="toggleCarrito()"><i class="fa-solid fa-xmark"></i></span>
       </div>
       <div id="cart-items-container"></div>
-      <div style="margin-top: 15px;">
-        <p>Total: <strong id="cart-total">L. 0.00</strong></p>
+      <div style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 12px;">
+        <p style="display:flex; justify-content:space-between; font-weight:700;"><span>Total:</span> <strong id="cart-total">L. 0.00</strong></p>
         <button class="btn-checkout" onclick="mostrarCheckout()">Proceder al Pago</button>
       </div>
     </div>
   </div>
 
+  <!-- Checkout Modal -->
   <div id="modal-checkout" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
-        <h3>Pasarela de Pago Seguro</h3>
-        <span class="close-btn" onclick="cerrarCheckout()">&times;</span>
+        <h3><i class="fa-solid fa-lock"></i> Pago Seguro</h3>
+        <span class="close-btn" onclick="cerrarCheckout()"><i class="fa-solid fa-xmark"></i></span>
       </div>
       <form onsubmit="procesarPago(event)">
-        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required style="width:100%; padding:8px; margin-bottom:8px;">
-        <input type="tel" placeholder="WhatsApp" required style="width:100%; padding:8px; margin-bottom:8px;">
-        <p style="margin: 10px 0;">Método: <strong>Tarjeta / Pasarela Simulada</strong></p>
+        <input type="text" id="nombre-cliente" placeholder="Nombre Completo" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
+        <input type="tel" placeholder="WhatsApp / Teléfono" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
+        <p style="margin: 10px 0; font-size: 0.85rem; color:#64748b;">Método: <strong>Tarjeta / Transferencia Bancaria</strong></p>
         <button type="submit" class="btn-checkout">Confirmar Pedido</button>
       </form>
     </div>
@@ -194,8 +422,8 @@
           <div class="product-mini-card">
             <div class="img-box"><img src="${p.imagen}" alt="${p.nombre}"></div>
             <h4>${p.nombre}</h4>
-            <p class="price">L. ${p.precio}.00</p>
-            <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})">Añadir al carrito</button>
+            <p class="price">L. ${p.precio}.00 HNL</p>
+            <button class="btn-add-mini" onclick="agregarAlCarrito(${p.id})"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
           </div>
         `;
       });
@@ -231,11 +459,20 @@
       let totalItems = 0, totalMonto = 0;
       container.innerHTML = '';
 
-      carrito.forEach(item => {
-        totalItems += item.cantidad;
-        totalMonto += item.precio * item.cantidad;
-        container.innerHTML += `<div style="display:flex; justify-between; margin-bottom:5px;"><span>${item.nombre} (x${item.cantidad})</span><strong>L. ${item.precio * item.cantidad}</strong></div>`;
-      });
+      if(carrito.length === 0) {
+        container.innerHTML = '<p style="color:#94a3b8; font-size:0.85rem; text-align:center;">Tu carrito está vacío</p>';
+      } else {
+        carrito.forEach(item => {
+          totalItems += item.cantidad;
+          totalMonto += item.precio * item.cantidad;
+          container.innerHTML += `
+            <div class="cart-item">
+              <span>${item.nombre} (x${item.cantidad})</span>
+              <strong>L. ${item.precio * item.cantidad}</strong>
+            </div>
+          `;
+        });
+      }
 
       count.innerText = totalItems;
       totalElem.innerText = `L. ${totalMonto.toFixed(2)} HNL`;
