@@ -30,13 +30,13 @@
     .nav-links a { text-decoration: none; color: var(--text-muted); margin: 0 10px; font-weight: 600; font-size: 0.9rem; }
     .nav-links a.active { color: var(--primary); font-weight: 800; }
     .nav-right { display: flex; align-items: center; gap: 15px; }
-    .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: var(--primary); background: #f1f5f9; padding: 8px 12px; border-radius: 8px; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 0.9rem; color: var(--primary); background: #f1f5f9; padding: 8px 12px; border-radius: 8px; font-weight: bold; }
     .cart-icon .badge { position: absolute; top: -6px; right: -6px; background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
 
     /* Banner Principal */
     .hero-card { position: relative; height: 240px; border-radius: 12px; overflow: hidden; background: linear-gradient(90deg, #1c355e 0%, #2a4b80 100%); color: white; display: flex; align-items: center; padding: 0 25px; margin-bottom: 20px; }
-    .hero-text h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
-    .hero-text p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 15px; }
+    .hero-text h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+    .hero-text p { font-size: 0.85rem; opacity: 0.9; margin-bottom: 15px; }
     .btn-hero { display: inline-block; background-color: #ffffff; color: var(--primary); padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
 
     /* Sección Tienda */
@@ -100,8 +100,7 @@
       </nav>
       <div class="nav-right">
         <div class="cart-icon" onclick="toggleCarrito()">
-          <i class="fa-solid fa-bag-shopping"></i> 🛒 Carrito
-          <span id="cart-count" class="badge">0</span>
+          🛒 Carrito <span id="cart-count" class="badge">0</span>
         </div>
       </div>
     </header>
@@ -110,19 +109,20 @@
       <section class="hero-card">
         <div class="hero-text">
           <h1>Moda con Identidad Hondureña</h1>
-          <p>Envíos garantizados a todo el país. Confección local de alta calidad.</p>
+          <p>Envíos garantizados a todo el país. Confección artesanal de alta calidad.</p>
           <a href="#tienda" class="btn-hero">Ver Catálogo</a>
         </div>
       </section>
 
       <section id="tienda">
-        <h3 class="section-title">Catálogo de Productos</h3>
+        <h3 class="section-title">Catálogo Artesanal</h3>
 
         <div class="category-filters">
           <button class="filter-btn active" onclick="filtrarProductos('Todos', this)">Todos</button>
           <button class="filter-btn" onclick="filtrarProductos('Hombre', this)">Hombre</button>
           <button class="filter-btn" onclick="filtrarProductos('Mujer', this)">Mujer</button>
           <button class="filter-btn" onclick="filtrarProductos('Accesorios', this)">Accesorios</button>
+          <button class="filter-btn" onclick="filtrarProductos('Abrigos', this)">Abrigos</button>
         </div>
 
         <div class="products-grid-mini" id="productos-grid"></div>
@@ -134,7 +134,7 @@
     </footer>
   </div>
 
-  <!-- Modal Detalle del Producto (Selección de Tallas y Stock) -->
+  <!-- Modal Detalle del Producto -->
   <div id="modal-producto" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
@@ -207,22 +207,44 @@
   </div>
 
   <script>
-    // Catálogo por defecto
-    let productos = [
-      { id: 1, nombre: "Camisa Guayabera Lenca", precio: 850, categoria: "Hombre", imagen: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80", stock: 12, descripcion: "Confeccionada con algodón de alta calidad y detalles bordados autóctonos." },
-      { id: 2, nombre: "Vestido Autóctono Flores", precio: 950, categoria: "Mujer", imagen: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80", stock: 8, descripcion: "Diseño exclusivo inspirado en la flora hondureña y cortes cómodos." },
-      { id: 3, nombre: "Sombrero de Junco Hondureño", precio: 450, categoria: "Accesorios", imagen: "https://images.unsplash.com/photo-1521369984125-650a3a816834?auto=format&fit=crop&w=600&q=80", stock: 15, descripcion: "Tejido a mano por artesanos locales en Santa Bárbara." }
+    // Catálogo base con imágenes estables
+    let productosBase = [
+      { id: 1, nombre: "Camisa Lenca Bordada A Mano", precio: 620, categoria: "Hombre", imagen: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80", stock: 12, descripcion: "Camisa guayabera blanca confeccionada en algodón con finos detalles de bordado tradicional lenca." },
+      { id: 2, nombre: "Bufanda de Tela Artesanal Lenca", precio: 490, categoria: "Accesorios", imagen: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80", stock: 15, descripcion: "Chal/bufanda tejida en telar de palanca tradicional con combinaciones de tonos cálidos y culturales." },
+      { id: 3, nombre: "Falda Tejida Tradicional (Pasta)", precio: 620, categoria: "Mujer", imagen: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=80", stock: 10, descripcion: "Falda plisada de talle alto elaborada con patrones geométricos y textiles representativos." },
+      { id: 4, nombre: "Bolso Canvas Eco de Cuero y Tela", precio: 250, categoria: "Accesorios", imagen: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80", stock: 18, descripcion: "Tote bag resistente de tela canvas natural combinada con detalles de piel y tejido artesanal." },
+      { id: 5, nombre: "Vestido Artesanal de Algodón", precio: 750, categoria: "Mujer", imagen: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80", stock: 8, descripcion: "Vestido fresco con bordados autóctonos hechos por artesanas locales en Intibucá." },
+      { id: 6, nombre: "Guayabera Ejecutiva Lenca Azul", precio: 680, categoria: "Hombre", imagen: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80", stock: 9, descripcion: "Prenda formal y fresca de lino/algodón en tono azul profundo con alforzas y tejido típico." },
+      { id: 7, nombre: "Bolso Cuero y Tejido de Mano", precio: 550, categoria: "Accesorios", imagen: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80", stock: 14, descripcion: "Cartera de mano confeccionada en cuero genuino y frente de tapiz Lenca elaborado en telar." },
+      { id: 8, nombre: "Sudadera Artesanal Catracha", precio: 650, categoria: "Abrigos", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80", stock: 11, descripcion: "Sudadera de felpa cálida con apliques bordados del mapa y símbolos de Honduras." }
     ];
 
-    let productosFiltrados = productos;
+    let productos = [];
+    let productosFiltrados = [];
     let carrito = JSON.parse(localStorage.getItem('cart_cw')) || [];
     let tallaSeleccionada = 'M';
     let metodoPagoActual = 'tarjeta';
 
-    document.addEventListener("DOMContentLoaded", () => {
+    // Carga dinámica desde JSON (si existe) o usa el catálogo completo integrado
+    fetch('productos.json?v=5.0')
+      .then(res => res.json())
+      .then(data => { inicializarProductos(data); })
+      .catch(() => {
+        fetch('products.json?v=5.0')
+          .then(res => res.json())
+          .then(data => { inicializarProductos(data); })
+          .catch(() => { inicializarProductos(productosBase); });
+      });
+
+    function inicializarProductos(data) {
+      productos = data.map(p => ({
+        ...p,
+        stock: p.stock || Math.floor(Math.random() * 12) + 6
+      }));
+      productosFiltrados = productos;
       renderProductos();
       actualizarUI();
-    });
+    }
 
     function renderProductos() {
       const grid = document.getElementById('productos-grid');
