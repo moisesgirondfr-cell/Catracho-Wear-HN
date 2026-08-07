@@ -6,12 +6,101 @@
   <title>CATRACHOWEAR | Moda con Identidad Hondureña</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    :root {
+      --primary: #1c355e;
+      --primary-hover: #122442;
+      --accent: #25d366;
+      --bg-body: #dbe4ee;
+      --bg-card: #ffffff;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-body); padding: 15px 3%; color: var(--text-dark); }
+    
+    .main-container { max-width: 1100px; margin: 0 auto; background-color: var(--bg-card); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 15px; }
+
+    /* Navbar */
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px 15px 5px; flex-wrap: wrap; gap: 10px; }
+    .logo { font-family: 'Pacifico', cursive; font-size: 1.8rem; color: var(--primary); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); margin: 0 10px; font-weight: 600; font-size: 0.9rem; }
+    .nav-links a.active { color: var(--primary); font-weight: 800; }
+    .nav-right { display: flex; align-items: center; gap: 15px; }
+    .account-link { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: var(--primary); }
+    .cart-icon .badge { position: absolute; top: -8px; right: -10px; background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
+
+    /* Hero Banner */
+    .hero-card { position: relative; height: 280px; border-radius: 12px; overflow: hidden; background: linear-gradient(90deg, rgba(240,237,232,0.95) 0%, rgba(240,237,232,0.4) 60%), url('https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; display: flex; align-items: center; padding: 0 25px; margin-bottom: 20px; }
+    .hero-text { max-width: 420px; z-index: 2; }
+    .hero-text h1 { font-size: 1.5rem; font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 8px; }
+    .hero-text p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
+    .btn-hero { display: inline-block; background-color: var(--primary); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
+
+    /* Sección Tienda & Categorías */
+    .section-title { font-size: 1.1rem; color: var(--primary); margin: 20px 0 10px 0; }
+    .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 15px; }
+    .category-card { position: relative; height: 140px; border-radius: 10px; overflow: hidden; cursor: pointer; }
+    .category-card img { width: 100%; height: 100%; object-fit: cover; }
+    .category-title { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: 'Pacifico', cursive; font-size: 1.4rem; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.7); }
+
+    /* Filtros */
+    .category-filters { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; }
+    .filter-btn { background: #f1f5f9; border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); cursor: pointer; white-space: nowrap; }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    /* Grid de Productos */
+    .products-grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+    .product-mini-card { background: #f8fafc; border-radius: 8px; padding: 10px; text-align: center; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+    .product-mini-card .img-box { height: 110px; margin-bottom: 8px; border-radius: 6px; overflow: hidden; cursor: pointer; }
+    .product-mini-card img { width: 100%; height: 100%; object-fit: cover; }
+    .badge-cat { font-size: 0.65rem; background: #e2e8f0; color: var(--text-muted); padding: 2px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+    .product-mini-card h4 { font-size: 0.8rem; color: var(--text-dark); margin: 4px 0; }
+    .product-mini-card .price { font-size: 0.85rem; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .btn-add-mini { background: #cbd5e1; border: none; color: var(--text-dark); font-size: 0.75rem; font-weight: 700; padding: 6px 10px; border-radius: 4px; cursor: pointer; width: 100%; }
+
+    /* Secciones Informativas */
+    .info-section { margin-top: 25px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+    .section-heading { font-size: 1.1rem; color: var(--primary); margin-bottom: 10px; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; }
+    .nosotros-content p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 10px; }
+    .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
+    .valor-box { background: white; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    .valor-box i { font-size: 1.4rem; color: var(--primary); margin-bottom: 5px; }
+
+    .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 10px; }
+    .contact-card { display: flex; align-items: center; gap: 12px; background: white; padding: 12px; border-radius: 8px; text-decoration: none; color: var(--text-dark); border: 1px solid var(--border-color); }
+    .contact-card.whatsapp i { font-size: 1.8rem; color: var(--accent); }
+    .contact-card.email i { font-size: 1.8rem; color: var(--primary); }
+
+    .footer-bar { background-color: var(--primary); color: #ffffff; text-align: center; padding: 12px; margin-top: 20px; border-radius: 0 0 10px 10px; font-size: 0.8rem; }
+
+    /* Modales */
+    .cart-modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 3000; justify-content: center; align-items: center; }
+    .cart-modal-content { background: white; width: 90%; max-width: 420px; padding: 20px; border-radius: 10px; max-height: 90vh; overflow-y: auto; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .close-btn { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+    .btn-checkout, .btn-confirm-pay { width: 100%; background: var(--primary); color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+    .btn-qty { background: #e2e8f0; border: none; padding: 2px 8px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+    .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+
+    .checkout-form h4 { font-size: 0.85rem; color: var(--primary); margin: 10px 0 5px 0; }
+    .checkout-form input { width: 100%; padding: 8px; margin-bottom: 8px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; }
+    .total-checkout-display { display: flex; justify-content: space-between; font-weight: bold; font-size: 1rem; color: var(--primary); margin: 12px 0; }
+
+    @media (max-width: 600px) {
+      .categories-grid { grid-template-columns: 1fr; }
+      .hero-card { height: auto; padding: 25px 15px; }
+      .hero-text h1 { font-size: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
   <div class="main-container">
-    <!-- Navbar -->
     <header class="navbar">
       <a href="#" class="logo">CATRACHOWEAR</a>
       <nav class="nav-links">
@@ -30,7 +119,6 @@
     </header>
 
     <main>
-      <!-- Hero Banner -->
       <section id="inicio" class="hero-card">
         <div class="hero-text">
           <h1>Moda con Identidad Hondureña</h1>
@@ -39,7 +127,6 @@
         </div>
       </section>
 
-      <!-- Tienda & Categorías -->
       <section id="tienda">
         <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Categorías Principales</h3>
         <div class="categories-grid">
@@ -57,7 +144,6 @@
           </div>
         </div>
 
-        <!-- Filtros interactivos -->
         <div class="category-filters">
           <button class="filter-btn active" onclick="filtrarProductos('Todos', this)">Todos</button>
           <button class="filter-btn" onclick="filtrarProductos('Hombre', this)">Hombre</button>
@@ -70,7 +156,6 @@
         <div class="products-grid-mini" id="productos-grid"></div>
       </section>
 
-      <!-- Nosotros -->
       <section id="nosotros" class="info-section">
         <h2 class="section-heading"><i class="fa-solid fa-building"></i> Sobre Catracho Wear HN</h2>
         <div class="nosotros-content">
@@ -83,7 +168,6 @@
         </div>
       </section>
 
-      <!-- Ayuda -->
       <section id="ayuda" class="info-section">
         <h2 class="section-heading"><i class="fa-solid fa-headset"></i> Centro de Ayuda</h2>
         <div class="contact-cards">
@@ -112,7 +196,6 @@
     </footer>
   </div>
 
-  <!-- Modal Detalle de Producto -->
   <div id="modal-producto" class="cart-modal">
     <div class="cart-modal-content product-detail-box">
       <span class="close-btn" onclick="cerrarDetalleProducto()">&times;</span>
@@ -120,7 +203,6 @@
     </div>
   </div>
 
-  <!-- Modal Carrito -->
   <div id="modal-carrito" class="cart-modal">
     <div class="cart-modal-content">
       <div class="cart-header">
@@ -135,7 +217,6 @@
     </div>
   </div>
 
-  <!-- Modal Checkout -->
   <div id="modal-checkout" class="cart-modal">
     <div class="cart-modal-content checkout-box">
       <div class="cart-header">
@@ -165,8 +246,8 @@
     let productosFiltrados = [];
     let carrito = JSON.parse(localStorage.getItem('cart_cw')) || [];
 
-    // Carga de productos
-    fetch('products.json?v=2.0')
+    // Carga de productos (Busca productos.json primero o products.json)
+    fetch('productos.json?v=3.0')
       .then(res => res.json())
       .then(data => { 
         productos = data; 
@@ -174,7 +255,17 @@
         renderProductos(); 
         actualizarUI(); 
       })
-      .catch(err => console.error("Error al cargar productos.json", err));
+      .catch(() => {
+        fetch('products.json?v=3.0')
+          .then(res => res.json())
+          .then(data => {
+            productos = data; 
+            productosFiltrados = data;
+            renderProductos(); 
+            actualizarUI(); 
+          })
+          .catch(err => console.error("Error al cargar JSON", err));
+      });
 
     function renderProductos() {
       const grid = document.getElementById('productos-grid');
@@ -221,13 +312,13 @@
       if(!p) return;
       const body = document.getElementById('detalle-producto-body');
       body.innerHTML = `
-        <div class="modal-prod-flex">
-          <img src="${p.imagen}" alt="${p.nombre}" class="modal-prod-img">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <img src="${p.imagen}" alt="${p.nombre}" style="width:100%; max-height:220px; object-fit:cover; border-radius:8px;">
           <div>
             <span class="badge-cat">${p.categoria}</span>
             <h3 style="color:var(--primary); margin: 6px 0;">${p.nombre}</h3>
-            <p style="font-size:0.9rem; color:#475569; margin-bottom:12px; line-height:1.5;">${p.descripcion}</p>
-            <p style="font-size:1.3rem; font-weight:800; color:var(--primary); margin-bottom:15px;">L. ${p.precio}.00 HNL</p>
+            <p style="font-size:0.85rem; color:#475569; margin-bottom:12px; line-height:1.4;">${p.descripcion || 'Producto de alta calidad artesanal catracha.'}</p>
+            <p style="font-size:1.2rem; font-weight:800; color:var(--primary); margin-bottom:12px;">L. ${p.precio}.00 HNL</p>
             <button class="btn-confirm-pay" onclick="agregarAlCarrito(${p.id}); cerrarDetalleProducto();"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito</button>
           </div>
         </div>
@@ -341,3 +432,4 @@
   </script>
 </body>
 </html>
+
